@@ -1,44 +1,38 @@
-G'day there,
+#MedicalDevicesNLP
 
-Here is a quick summary of what is contained in this codebase and some advice on the next steps. 
+Brief and incomplete overview of some of the processes being used. There may be incomplete code that I need to fix up, and I've noticed some change in tidyverse's behaviour (more on this in the Notes section).
 
-# Whats the context & question?
-**The task is to explore tools to identify problems in the *text reports* of *implantable medical devices*.**
+## Topic modelling pipeline
 
-The current basic approach is to compare the baseline occurrence of problems to potential increases, and similarly relate these increases occurrences to corresponding activities.
+### Preprocessing
+- Reports/TGA-DAEN.ipynb
+Tobin's code to scrape data, saved to data/all_reports/all_reports_df.csv
+- R/TGA-DAEN_match_manufacturers.R
+This tries to match manufacturer names using fuzzy string detection and does some preprocessing.
+- R/gen_train.R
+A little more preprocessing and formatting for hSBM.
 
-### Open Questions
-- What is the best vocabulary of problems/activities to search for.
-- How can we identify significant words, word pairs or collections of words for each manufacturer.
+You won't have to run any of this if you don't want to, results are in data/hSBM/train.csv
 
-# What Data?
-### Main data
-Two sets of main data: 
-- From Australia there is the Therapeutic Goods Administration (TGA) which has the [Database of Adverse Event Notifications (medical devices)](https://apps.tga.gov.au/Prod/devices/daen-entry.aspx).
-- In the US the *much* larger data from the Food and Drug Administration (FDA) is the [Manufacturer and User Facility Device Experience Database (MAUDE)](https://www.fda.gov/medical-devices/mandatory-reporting-requirements-manufacturers-importers-and-device-user-facilities/manufacturer-and-user-facility-device-experience-database-maude). The file `FDA MAUDE Primer.pdf` may help in understanding this data.
+### Topic Modelling
+- Python/hSBM.py
+Peforms hierarchical stochastic block modelling. Again, no need to run unless you want to change any of the preprocessing steps.
 
-Both of these datasets have two varieties: the device/report data and the text/narrative data. The latter is of interest for text analysis.
+### Post Processing
+- R/analyse_topics_clean.R
+Formats the hSBM results into:
+- data/tidy_topics.csv
+This gives P(word | Level, Topic)
+- data/tidy_topics_docs.csv
+This gives P(topic | Level, Doc)
 
-The TGA data has been scraped in the `tgaScraping` subfolder. The data is available in the `data/tga` folder.
-The MAUDE Jupyter notebook will download this data for you. See the notebooks for a preliminary analysis.
+From here you can do all the fun stuff. 
 
-### Helpful data
-- `vocabulary/CPA_activities.csv` is a list of physical activities from the [2011 Compendium of Physical Activities](https://sites.google.com/site/compendiumofphysicalactivities/home)
-- `vocabulary/annex_*.json` is terminology of possible adverse events as classified by [IMDRF](http://imdrf.org/documents/documents.asp)
+### Analysis
+- R/med_devices_data.R
+This gets the data for the disproportionality analysis which Ty has been using.
 
-# Useful external tools
-- [`medaCy`](https://github.com/NLPatVCU/medaCy) medical named entity recognition.
-- [`PyMedTermino`](https://pypi.org/project/PyMedTermino/) medical technical terminology mapping.
-- [`medpie`](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3289922/): an information extraction package for medical message board posts
+## Notes: 
+- You will need to run R/analyse_topics_clean.R to generate data/tidy_topics_docs.R as it is > 200MB and won't push to github.
+- R appears to use ...1 instead of X1 now for loading unnamed colums. If you get an error finding "X1" and replacing with "...1". Probably the same with "X2" and "...2". #TODO I will need to check this at some point.
 
-
-# Other Glossary
-- `tgaScraping/ProsthesisSponsors.xlsx` is the list of all sponsors in the DAEN data.
-- `random_files/FDA MAUDE Primer.pdf` is a pdf report of what the FDA MAUDE data means.
-  `random_files/Grant Proposal.pdf` is the project proposed for this grant.
-
-
-
-# Specific Todo-list items:
-* Map common words to the same vocabulary ('sexual intercourse', 'sex' and 'intercourse' -> 'sex')
-* Map varied manufacturer names to distinct manufacturers.

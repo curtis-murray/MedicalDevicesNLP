@@ -237,17 +237,17 @@ all_reports_mached_manufacturer_df <- all_reports %>% left_join(all_manufacturer
 all_reports_mached_manufacturer_df %>% 
   write_csv("data/all_reports/all_reports_mached_manufacturer_df.csv")
 
-train <- all_reports_mached_manufacturer_df %>% 
-  unnest_tokens(word, `Event description`) %>% 
-  anti_join(stop_words, by = "word") %>% 
-  group_by(word) %>% 
-  filter(n() > 3) %>% 
-  group_by(`Report number`) %>% 
-  filter(n() > 3) %>% 
-  group_by(across(-word)) %>% 
-  summarise(content = paste0(word, collapse = " "))
-
-write_csv(train, "data/hSBM/train.csv")
+# train <- all_reports_mached_manufacturer_df %>% 
+#   unnest_tokens(word, `Event description`) %>% 
+#   anti_join(stop_words, by = "word") %>% 
+#   group_by(word) %>% 
+#   filter(n() > 3) %>% 
+#   group_by(`Report number`) %>% 
+#   filter(n() > 3) %>% 
+#   group_by(across(-word)) %>% 
+#   summarise(content = paste0(word, collapse = " "))
+# 
+# write_csv(train, "data/hSBM/train.csv")
 
 all_manufacturers_named %>% 
   top_n(50, count) %>% 
