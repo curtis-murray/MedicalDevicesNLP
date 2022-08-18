@@ -1,0 +1,433 @@
+from,to
+abdomen,heart
+abdomen,lung
+abdomen,midriff
+abdomen,thorax
+adenoids,back
+adenoids,nose
+adenoids,throat
+alimentary canal,anus
+alimentary canal,mouth
+amygdala,cerebellum
+amygdala,tonsil
+ankle,foot
+ankle,leg
+anus,alimentary canal
+aorta,artery
+aorta,blood
+aorta,heart
+aorta,lung
+appendix,caecum
+aqueous humour,cornea
+aqueous humour,eyeball
+arm,shoulder
+arm,wrist
+armpit,arm
+armpit,shoulder
+artery,blood
+artery,heart
+atrium or auricle,heart
+auditory nerve,brain
+auditory nerve,ear
+auditory nerve,nerve
+back,neck
+belly,abdomen
+belly,intestine
+bicuspid valve,blood
+bicuspid valve,heart
+bicuspid valve,ventricle
+bladder,kidney
+blind spot,eyeball
+blind spot,nerve
+blind spot,optic nerve
+blind spot,retina
+blood,blood
+blood,heart
+blood,red blood cell
+blood,vein
+blood,white blood cell
+brain,brainstem
+brain,cerebellum
+brain,cerebrum
+brainstem,brain
+brainstem,medulla oblongata
+brainstem,midbrain
+brainstem,pons Varolii
+breast,chest
+breast,gland
+Broca's area,brain
+caecum,intestine
+caecum,large intestine
+calf,ankle
+calf,back
+calf,knee
+calf,leg
+capillary,blood
+central sulcus,brain
+central sulcus,forehead
+central sulcus,frontal lobe
+central sulcus,parietal lobe
+cerebellum,brain
+cerebellum,cerebrum
+cerebellum,medulla oblongata
+cerebral cortex or (nontechnical) grey matter,brain
+cerebral cortex or (nontechnical) grey matter,cerebrum
+cerebrospinal fluid,brain
+cerebrum,brain
+cervix,vagina
+cervix,womb
+cheek,eye
+cheek,side
+chest,belly
+chest,neck
+chest,trunk
+chin,jaw
+choroid or chorioid,eyeball
+choroid or chorioid,retina
+choroid or chorioid,sclera
+choroid plexus,brain
+choroid plexus,cerebrospinal fluid
+choroid plexus,ventricle
+ciliary body,eye
+ciliary body,iris
+clitoris,penis
+clitoris,vulva
+cochlea,ear
+cochlea,nerve
+colon,caecum
+colon,intestine
+colon,large intestine
+colon,rectum
+cone,cone
+cone,eye
+cone,retina
+conjunctiva,eyeball
+conjunctiva,eyelid
+cornea,eyeball
+cornea,sclera
+corpus callosum,brain
+diencephalon,brain
+diencephalon,hypothalamus
+diencephalon,thalamus
+duodenum,intestine
+duodenum,jejunum
+duodenum,small intestine
+duodenum,stomach
+ear lobe,ear
+ear lobe,external ear
+"eardrum, tympanic membrane, or tympanum",cochlea
+"eardrum, tympanic membrane, or tympanum",ear
+"eardrum, tympanic membrane, or tympanum",external ear
+elbow,arm
+elbow,forearm
+epiglottis,voice box
+epiglottis,windpipe
+Eustachian tube,ear
+Eustachian tube,side
+external ear,ear
+external ear,external ear
+eye,brain
+eye,eye
+eye,iris
+eye,nerve
+eye,retina
+eyeball,eye
+eyebrow,eye
+eyelash,eyelid
+eyelash,hair
+eyelid,eyeball
+eyelid,skin
+Fallopian tube,womb
+finger,hand
+finger,thumb
+fingernail,finger
+fist,finger
+fist,hand
+fontanelle or (chiefly U.S.) fontanel,bone
+foot,ankle
+foot,leg
+forearm,arm
+forearm,elbow
+forearm,wrist
+forehead,bone
+forehead,eye
+forehead,forehead
+foreskin,foreskin
+foreskin,penis
+foreskin,skin
+fovea,cone
+fovea,retina
+frontal lobe,brain
+frontal lobe,central sulcus
+gland,gland
+glottis,vocal cords
+glottis,voice box
+groin,abdomen
+groin,leg
+gullet,gullet
+hair,follicle
+hair,skin
+half-moon,fingernail
+hamstring,back
+hamstring,knee
+hamstring,tendon
+hand,arm
+hand,finger
+hand,thumb
+hard palate,mouth
+hard palate,soft palate
+head,brain
+head,ear
+head,eye
+head,mouth
+head,nose
+heart,blood
+heart,ventricle
+heel,ankle
+heel,back
+heel,foot
+heel,instep
+hip,side
+hip,thigh
+hip,waist
+hippocampus,brain
+hippocampus,limbic system
+hippocampus,ventricle
+hypothalamus,brain
+hypothalamus,nerve
+ileum,caecum
+ileum,intestine
+ileum,jejunum
+ileum,small intestine
+incus,bone
+incus,ear
+infundibulum,brain
+infundibulum,gland
+infundibulum,pituitary gland
+inner ear or internal ear,bone
+inner ear or internal ear,cochlea
+inner ear or internal ear,ear
+inner ear or internal ear,semicircular canals
+instep,ankle
+instep,foot
+instep,toe
+intestine,alimentary canal
+intestine,anus
+intestine,stomach
+iris,midriff
+iris,pupil
+jaw,jaw
+jaw,mouth
+jejunum,duodenum
+jejunum,ileum
+jejunum,intestine
+jejunum,small intestine
+jugular vein,blood
+jugular vein,head
+jugular vein,heart
+jugular vein,neck
+jugular vein,vein
+kidney,abdomen
+kidney,back
+kidney,blood
+kidney,side
+knee,leg
+knuckle,finger
+knuckle,hand
+labia majora,skin
+labia majora,vagina
+labia minora,skin
+labia minora,vagina
+large intestine,alimentary canal
+large intestine,caecum
+large intestine,colon
+large intestine,rectum
+leg,bone
+limbic system,brain
+limbic system,corpus callosum
+lip,mouth
+liver,abdomen
+liver,midriff
+loin,back
+loin,side
+lung,blood
+lung,thorax
+lymph cell,blood
+lymph cell,white blood cell
+lymph node,lymph cell
+malleus,bone
+malleus,ear
+meatus or auditory canal,ear
+medulla oblongata,brain
+medulla oblongata,heart
+medulla oblongata,lung
+meninges,brain
+midbrain,brain
+midriff,waist
+mons pubis,bone
+mons pubis,pubes
+mons veneris,bone
+mons veneris,pubes
+myelencephalon or (nontechnical) afterbrain,medulla oblongata
+nape,back
+nape,neck
+navel or omphalos,abdomen
+navel or omphalos,navel or omphalos
+navel or omphalos,umbilical cord
+neck,head
+nerve,brain
+nerve cell,nerve
+nipple or teat,breast
+nose,hair
+nose,septum
+nostril,nose
+occipital lobe,brain
+occiput,back
+occiput,head
+optic nerve,brain
+optic nerve,nerve
+optic nerve,retina
+organ of Corti,cochlea
+organ of Corti,nerve
+pancreas,pancreas
+pancreas,stomach
+parietal lobe,brain
+pharynx,alimentary canal
+pharynx,gullet
+pharynx,mouth
+pineal body,brain
+pineal body,cone
+pineal body,eye
+pinna,ear
+pituitary gland,brain
+pituitary gland,gland
+pons Varolii,cerebellum
+pons Varolii,nerve
+pubes,hair
+pulmonary artery,blood
+pulmonary artery,heart
+pulmonary artery,lung
+pulmonary vein,blood
+pulmonary vein,heart
+pulmonary vein,lung
+pulmonary vein,vein
+pupil,eye
+pupil,iris
+rectum,alimentary canal
+rectum,anus
+rectum,colon
+retina,brain
+retina,eye
+retina,eyeball
+retina,nerve
+retina,optic nerve
+ribcage,heart
+ribcage,lung
+rod,eye
+rod,retina
+saccule,ear
+saccule,inner ear or internal ear
+scalp,head
+scalp,skin
+sclera,eyeball
+scrotum,skin
+semicircular canals,ear
+semicircular canals,inner ear or internal ear
+semilunar valve,aorta
+semilunar valve,artery
+semilunar valve,blood
+semilunar valve,heart
+semilunar valve,lung
+semilunar valve,pulmonary artery
+shin,leg
+shoulder,arm
+shoulder,trunk
+side,waist
+skin,hair
+small intestine,alimentary canal
+small intestine,duodenum
+small intestine,ileum
+small intestine,jejunum
+soft palate,mouth
+sole,foot
+spleen,blood
+spleen,lymph cell
+spleen,red blood cell
+spleen,stomach
+stapes,bone
+stapes,ear
+stomach,alimentary canal
+substantia alba or (nontechnical) white matter,brain
+substantia alba or (nontechnical) white matter,nerve
+suspensory ligament,eye
+tear duct,eyelid
+tear duct,nose
+temple,bone
+temple,cheek
+temple,ear
+temple,head
+temple,side
+temporal lobe,brain
+temporal lobe,parietal lobe
+tendon,bone
+testicle,gland
+testicle,scrotum
+thalamus,brain
+thigh,hip
+thigh,knee
+thigh,leg
+third ventricle,brain
+throat,back
+throat,mouth
+throat,voice box
+thumb,bone
+thumb,hand
+toe,foot
+toenail,toe
+tongue,mouth
+tonsil,back
+tonsil,mouth
+tonsil,side
+torso,trunk
+tragus,ear
+tragus,external ear
+transverse colon,intestine
+transverse colon,large intestine
+transverse colon,liver
+transverse colon,stomach
+trunk,head
+trunk,neck
+trunk,torso
+ureter,bladder
+ureter,kidney
+urethra,bladder
+utricle,ear
+utricle,inner ear or internal ear
+vagina,cervix
+vagina,labia minora
+vagina,neck
+vagina,womb
+vein,blood
+vein,heart
+vena cava,blood
+vena cava,heart
+vena cava,vein
+ventricle,blood
+ventricle,heart
+vermis,cerebellum
+vitreous body,eyeball
+vitreous body,retina
+vitreous humour,vitreous body
+vocal cords,lung
+vocal cords,vocal cords
+vocal cords,voice box
+voice box,lung
+voice box,vocal cords
+vulva,clitoris
+vulva,mons veneris
+vulva,vagina
+waist,hip
+waist,trunk
+windpipe,voice box
+wrist,forearm
+wrist,hand

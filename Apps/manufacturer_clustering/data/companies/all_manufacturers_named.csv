@@ -1,0 +1,982 @@
+Manufacturer,count,Manufacturer_ID
+Boston Scientific Corporation,1042,1
+Alcon Laboratories Inc,874,2
+Depuy Orthopaedic Inc,703,5
+Philips Medical Systems,695,3
+Abbott Vascular,601,7
+DexCom Incorporated,528,4
+Cardiac Pacemakers Inc,479,6
+Smith & Nephew Inc Orthopaedic Division,459,15
+Cochlear Ltd,442,8
+Medtronic Inc,408,43
+HeartWare Inc,399,14
+St Jude Medical Cardiac Rhythm Management Division USA,383,9
+Covidien llc,367,10
+Allergan,356,13
+Zimmer Inc,352,40
+Roche Diabetes Care GmbH,350,11
+Fresenius Kabi AG,349,25
+Beckman Coulter Inc,342,12
+Depuy France SAS,298,50
+Howmedica Osteonics Corporation,284,18
+Cook Incorporated,271,16
+Ethicon Endo Surgery LLC,264,17
+Biomet Orthopedics Inc,250,20
+Biotronik SE & Co KG,243,22
+Bard Access Systems Inc,225,19
+Applied Medical Resources,210,24
+Ethicon SARL Switzerland,199,27
+Cochlear Bone Anchored Solutions AB,198,21
+Cardiac Pacemakers Inc (A wholly owned subs of Guidant Corp A wholly owned subs of Boston Scientific Corp),193,33
+Bayer Healthcare LLC,180,51
+ArjoHuntleigh AB,167,31
+Physio-Control Inc,161,26
+Abbott Laboratories Abbott Vascular Inc,159,64
+W L Gore & Assoc Inc,157,29
+Olympus Medical Systems Corporation,156,28
+Limacorporate Spa,145,34
+American Medical Systems Inc,144,53
+Advanced Neuromodulation Systems Inc,140,30
+Global Manufacturing Technology Pty Ltd,133,45
+Biomet UK Ltd,123,38
+Synthes GmbH,123,35
+Alcon GPS - WaveLight GmbH,121,36
+ICU Medical Inc,117,39
+St Jude Medical,114,42
+Biosense Webster Inc,108,52
+Medacta International SA,106,44
+Fisher & Paykel Healthcare Ltd,100,46
+Edwards Lifesciences LLC,99,48
+Ethicon LLC,97,71
+Arthrocare Corporation,90,84
+Becton Dickinson Infusion Therapy Systems Inc,87,174
+Omni Life Science Inc,86,49
+Smiths Medical ASD Incorporated,85,111
+Alere San Diego Inc,80,54
+Atrium Medical Corporation,78,55
+Johnson & Johnson International,78,103
+CareFusion Switzerland 317 Sarl,77,56
+Codman & Shurtleff Inc (Massachusetts),77,125
+Nevro Corporation,76,57
+Lifescan Inc,75,58
+Unomedical AS Infusion Devices,74,133
+Medos International Sarl,72,73
+Radiometer Medical APS,70,62
+GI Dynamics Inc,69,90
+Hospira Inc,66,63
+Roche Diagnostics GmbH,66,74
+Ethicon Inc T/a Gynecare Johnson & Johnson Wound Mgt ETHICON Wmns Hth & Urology,61,115
+Corin Limited,60,67
+MicroPort Orthopedics Inc,60,66
+Genzyme Biosurgery,59,68
+William Cook Europe A/S,59,104
+Coloplast AS,58,69
+Siemens Healthcare Diagnostics Inc,58,123
+Biomet Spain Orthopaedics SL,57,97
+Med-El Elektromedizinische Geraete GmbH,56,82
+Q-Med AB,53,75
+Arrow International Inc,52,76
+Cordis Corp,52,89
+LivaNova Canada Corp,52,81
+K2M Inc,51,77
+B Braun Melsungen AG,50,96
+Bard Peripheral Vascular Inc,50,79
+Alere Medical Co Ltd,49,83
+Datascope Corp,48,85
+LivaNova USA Inc,48,131
+Sorin Group Deutschland GmbH,48,130
+Abbott Diabetes Care Inc,47,112
+Animas Corporation,46,87
+Halyard Health Inc,45,107
+Integra Lifesciences Corporation,45,150
+Nuvasive Inc,45,91
+Convatec Limited,43,118
+Gambro Lundia AB Monitor Division,43,100
+Abbott GmbH & Co KG,41,134
+Medline Industries Inc,41,188
+C R Bard Inc,40,101
+Carl Zeiss Meditec AG,40,109
+Innovacon Inc,40,121
+ConMed Corporation,39,105
+Multigate Medical Products Pty Ltd,38,144
+Q-Core Medical Ltd,38,106
+Benoist Girard,37,113
+AGA Medical Corporation,36,146
+Hologic Inc,36,110
+Maco Pharma,36,143
+American Medical Systems Innovation Centre - Silicon Valley,35,117
+CareFusion 303 Inc,35,179
+Wilson-Cook Medical Inc,35,116
+Davol Inc Subsidiary of C R Bard Inc,34,114
+Dermik Laboratories Inc,34,119
+Gambro Dasco SPA Medolla Facility,33,122
+Maquet Cardiopulmonary AG,32,175
+Alcon LenSx Inc,31,190
+Teleflex Medical,31,173
+Evalve Inc,30,129
+Lars,30,128
+Terumo Corporation,29,232
+Implantcast GmbH,28,137
+Depuy Mitek (a Johnson & Johnson Company),27,136
+Exactech Inc,27,147
+Spinal Kinetics Inc,27,139
+Datex-Ohmeda,26,140
+Gyrus Acmi Inc,26,149
+Thoratec Corporation,26,145
+Zoll Medical Corporation,26,152
+Glaukos Corporation,25,148
+Rayner Intraocular Lenses Ltd,25,151
+Bausch & Lomb Inc,24,155
+Karl Storz GmbH & Co KG,24,242
+Merit Medical Systems Inc,24,159
+Penumbra Inc,24,161
+Stegemann Hand Arbeit & Services,24,162
+Atritech Inc,23,178
+Corin Medical A Division Of Corin Ltd,23,164
+Cyberonics Inc,23,165
+MAKO Surgical Corp,23,171
+Tornier SAS,23,185
+WaveLight AG,23,197
+Advanced Surgical Design & Manufacture Limited,22,204
+Apollo Endosurgery Inc,22,168
+GE Medical Systems Information Technologies,22,170
+Welch Allyn Protocol Inc,22,275
+Steris Corporation,21,216
+Elekta Business Area Software Systems Impac Medical Systems Inc,20,200
+Huntleigh Healthcare Nesbit Evans Products Division,20,180
+Merit Medical Singapore Pte Ltd,20,195
+Obtech Medical SARL,20,213
+Silimed Industria de Implantes LTDA,19,184
+United States Surgical (USS) A division of Tyco Healthcare Group LP,19,186
+Eurosilicone SAS,18,239
+Lake Region Medical,18,309
+Masimo Corporation,18,201
+Respironics Inc,18,227
+The Spectranetics Corporation,18,189
+GE Healthcare Finland Oy,17,193
+KCI USA Inc,17,194
+Nagor Ltd,17,196
+Resmed Limited,17,203
+Stimwave Technologies Inc,17,337
+BMDi TUTA Healthcare Pty Ltd,16,199
+Polytech Health & Aesthetics GmbH,16,202
+Synovis Surgical Innovations (A Div of Synovis Life Technologies Inc),16,231
+Airsep Corporation,15,316
+BD Switzerland Sarl,15,205
+Beijing KES Biology Technology Co Ltd,15,206
+Codan US Corporation,15,207
+ConMed Linvatec USA,15,236
+Fairmont Medical Products Pty Ltd,15,208
+Livingstone International Pty Ltd,15,209
+Materialise NV,15,210
+MatOrtho Ltd,15,223
+Molnlycke Health Care AB,15,212
+Philips Medizinsysteme Boblingen,15,214
+Philips Ultrasound Inc,15,215
+Advanced Sterilization Products a Johnson & Johnson Company Division of Ethicon Inc,14,339
+Baxter Healthcare Renal Div,14,218
+Boston Scientific Australia and New Zealand,14,219
+BSN Medical Pty Ltd,14,220
+MicroVention Inc,14,224
+Nipro Corporation,14,225
+Olympus Winter & Ibe GmbH,14,226
+Vibrant Med-El Hearing Technology GmbH,14,233
+William A Cook Australia Pty Ltd,14,260
+Gambro Industries,13,285
+Grifols Australia Pty Ltd,13,240
+Inverness Medical Japan Co Ltd,13,241
+LifeScan Europe A Division of Cilag GmbH International,13,357
+Serf,13,243
+Sofradim Production,13,245
+TFS Manufacturing Pty Ltd,13,246
+Vygon GmbH & Co KG,13,247
+Vygon SA,13,248
+Wright Medical Technology Inc,13,261
+3M Health Care Group,12,249
+Asaleo Care Australia Pty Ltd,12,251
+Ballard Medical Products,12,252
+Cerapedics Inc,12,305
+Cook Biotech Incorporated,12,262
+Frantz Medical Development Ltd,12,255
+Medical Components Inc (dba Medcomp),12,268
+Silimed Ltd.,12,334
+Zevex Inc,12,278
+Gruppo Bioimpianti SRL,11,324
+Intuitive Surgical Inc,11,266
+Linmed Medical Co Ltd,11,387
+Medline Assembly Australia Pty Ltd,11,269
+Medtronic Sofamor Danek USA Inc,11,270
+Therakos Inc,11,274
+Vascutek Limited,11,314
+Wellspect HealthCare,11,276
+AccessClosure Inc,10,280
+Consensus Orthopedics Inc,10,346
+Ethicon Inc Also Trading as Ethicon Women's Health & Urology a Division Ethicon Inc,10,283
+Ferrosan Medical Devices AS,10,284
+Hill-Rom Inc,10,482
+Impac Medical Systems Inc,10,354
+Invacare Corporation,10,487
+Multilan AG,10,292
+Raumedic AG,10,394
+Royal Fornia Medical Equipment Co Ltd,10,365
+Siemens Medical Solutions USA Inc Molecular Imaging,10,397
+Vbm Medizintechnik GmbH,10,629
+Walter Lorenz Surgical Inc also trading as Biomet Microfixation,10,297
+Heraeus Medical GmbH,9,307
+Johnson and Johnson Vision Care Inc,9,308
+Maquet SA,9,329
+Mathys Ltd Bettlach,9,310
+Occlutech GmbH,9,311
+Angiotech Puerto Rico Inc,8,317
+Ansell (UK) Ltd,8,318
+Asahi Intecc Co Ltd Medical Division,8,319
+bioMerieux Inc,8,536
+Caesarea Medical Electronics Limited,8,321
+Candela Corporation,8,343
+Clearstream Technologies Ltd,8,345
+Femcare-Nikomed Ltd,8,323
+ITL Healthcare Pty Ltd,8,326
+Philips Goldway Shenzhen Industrial Inc,8,332
+Pride Mobility Products,8,434
+Solta Medical Inc,8,366
+Symmetry Surgical Inc,8,443
+WaveTec Vision Systems Inc,8,338
+ARJO Hospital Equipment AB,7,373
+Avanos Medical Inc,7,341
+Biomet Sports Medicine T/A Arthrotek Inc,7,342
+Drager Medical GmbH,7,474
+Emerging Implant Technologies GmbH,7,350
+Equashield Medical Ltd,7,351
+Gambro Dialysatoren GmbH,7,352
+GC Europe NV,7,353
+Irvine Biomedical Inc a St Jude Medical Company,7,355
+Kendall a Division of Tyco Healthcare Group LP,7,489
+Kimberly-Clark,7,383
+Leica Biosystems Melbourne Pty Ltd,7,384
+Maquet Critical Care AB,7,358
+Mediquip Sdn Bhd,7,359
+North Coast Medical Inc,7,361
+Novapharm Research (Australia) Pty Ltd,7,362
+Nutricia Medical devices BV,7,363
+Philips Medical Systems Nederland BV Business Unit Magnetic Resonance - Site Best,7,364
+Soluscope SAS,7,367
+Steelco Spa,7,368
+Vital Signs Inc,7,402
+AgaMatrix Inc,6,372
+BD Vacutainer Systems,6,374
+BrainLAB AG,6,375
+Cosman Medical Inc,6,468
+Evalve Inc DBA Abbott Vascular Inc,6,377
+FlowCardia Inc,6,378
+Greatbatch Medical,6,420
+Kyeron,6,425
+Liebel-Flarsheim Company LLC,6,426
+Liko AB,6,385
+Lumenis Limited,6,388
+Medica Europe BV,6,389
+Nuvasive Specialized Orthopaedics Inc,6,390
+Ontex Hygienartike,6,391
+Ossur HF,6,499
+Pajunk GmbH Medizintechnologie,6,392
+Planet Suzhou Medical Products Co Ltd,6,393
+Red Milawa Pty Ltd T/A Magic Mobility,6,395
+SenoRx Inc,6,396
+Smith & Nephew Inc Wound Management Divison,6,617
+Smiths Medical Czech Republic as,6,399
+TriVascular Inc,6,517
+Tyco Healthcare Group LP Puritan Bennett Division,6,518
+3M Espe Dental Products,5,405
+Acist Medical Systems Inc,5,406
+Aesculap AG,5,407
+Albaad Massuot Yitzhak Ltd,5,408
+Angiomed GmbH & Co,5,409
+Anteis SA,5,410
+Balt Extrusion SA,5,534
+Carbon Medical Technologies Inc,5,542
+Chalice Medical Ltd,5,412
+Clinical Innovations LLC,5,413
+Concentric Medical Inc,5,414
+Elekta Limited,5,416
+Foremount Enterprise Co Ltd,5,418
+Galemed Corporation,5,419
+Hivox Biotek Inc,5,421
+Hoya Corporation,5,422
+Idoman Teoranta,5,423
+Inpeco SA,5,579
+Integra Burlington MA Inc,5,485
+IO International Orthpaedics Holding GmbH,5,424
+Iris Diagnostics,5,749
+Logikal Health Products Pty Ltd,5,428
+Mediplas Respiratory Products Sdn Bhd,5,429
+Medline International France SAS,5,430
+Nikkiso Co Ltd,5,431
+Ningbo Greetmed Medical Instruments Co Ltd,5,432
+Otto Bock Healthcare GmbH & Co,5,607
+Pacific Hospital Supply Co Ltd,5,433
+Profit Country Enterprises Ltd,5,435
+Reckitt Benckiser Healthcare (UK) Limited,5,436
+SCA Hygiene Australasia Pty Limited,5,437
+Securmed SPA,5,615
+Sewoon Medical Co Ltd,5,503
+Shanghai Johnson & Johnson Ltd,5,438
+Shaoxing Fuqing Health Products Co Ltd,5,504
+Stanmore Implants Worldwide Ltd,5,441
+Tyco Healthcare (UK) Manufacturing LTD,5,444
+Verathon Medical (Canada) ULC,5,445
+Volcano Corporation,5,446
+Zimmer Trabecular Metal Technology Inc,5,448
+Adler Ortho SpA,4,642
+Alcon Irvine Technology Center,4,652
+Allium Ltd,4,525
+Ambu AS,4,452
+Anaesthetic Medical Systems,4,453
+Anhui Tiankang Medical Technology Co Ltd,4,526
+Ciba Vision Corp,4,462
+Cigweld Pty Ltd,4,463
+Conceptus Inc,4,464
+Contura International A/S,4,465
+CoorsTek Medical LLC,4,466
+Cordis Cashel,4,467
+Creganna Tactx Medical,4,551
+Defries Industries Pty Ltd,4,469
+Depuy International Ltd T/A Depuy Cmw,4,554
+DM Systems (Beijing) Co Limited,4,473
+Dragerwerk AG & Co KGaA,4,475
+F Stephan GmbH,4,714
+FHC Inc,4,479
+GE Medical Systems Israel - Functional Imaging,4,480
+Go Medical Industries Pty Ltd,4,481
+Impromediform GmbH,4,484
+International Medical Research,4,486
+Kerr Corporation,4,490
+LabStyle Innovations Ltd,4,491
+LeMaitre Vascular Inc,4,581
+Medical Innovation Developpement,4,493
+Meditech Systems Ltd,4,771
+Newdeal SAS,4,494
+Ohmeda Medical a Division of Datex-Ohmeda,4,495
+ONBO Electronics Co Ltd,4,791
+Ontex NV,4,496
+Orion Laboratories Pty Ltd T/A Perrigo Australia,4,497
+Osstem Implant Co Ltd,4,498
+Promedon SA,4,501
+Purple Surgical International Ltd,4,502
+Sirtex Medical Limited,4,506
+Spatz FGIA Inc,4,507
+Spinal Modulation Inc,4,508
+Stryker Neurovascular,4,512
+Swann Morton Ltd,4,513
+Sybron Implant Solutions,4,514
+Teoxane SA,4,515
+Unimax Medical Systems Inc,4,519
+Acumed Instruments Inc,3,873
+Alrick Manufacturing and Imports,3,658
+Arcadophta SARL,3,529
+Argon Medical Devices Inc,3,530
+Augmenix Inc,3,531
+Caremed Supply Inc,3,544
+Catheter Research Inc,3,684
+Codan Medizinische Gerate GmbH & Co KG,3,547
+Cooper Surgical Inc,3,549
+CooperVision Manufacturing Ltd T/a Aspect Vision Care - CL Tinters - Hydron - Ocular Sciences,3,550
+DeRoyal Industries Inc,3,704
+Draeger Medical Systems Inc,3,559
+Endologix International Holding BV,3,711
+Eska Implants GmbH and Co,3,561
+Establishment Labs SA,3,562
+ev3 Inc,3,563
+Exact Diagnostics LLC,3,564
+Fenwal Inc,3,565
+GE Medical Systems LLC,3,569
+Gerontic & General Products Pty Ltd,3,570
+Globus Medical Inc,3,727
+GN Otometrics AS,3,571
+Hanscent Ningbo Co Ltd,3,573
+Henan Hexin Hengda Industrial Co Ltd.,3,576
+High Technology Products SL - Cocoon Medical,3,577
+Imaging Sciences International Inc,3,578
+Key Pharmaceuticals Pty Ltd,3,757
+Lenstec Barbados Inc,3,582
+Leventon SAU,3,583
+Lovell Surgical Supplies International Pty Ltd,3,764
+MD Medical Clinic Ltd,3,587
+Medibo Medical Products NV,3,589
+Medtronic Advanced Energy LLC,3,590
+Merz Aesthetics Inc,3,592
+Nakanishi Inc,3,596
+Nantong Egens Biotechnology Co Ltd,3,597
+Neotract Inc,3,598
+Nova Orthopaedic & Rehabilitation Appliances Inc,3,599
+Novis Industrial Co Ltd,3,600
+NxStage Medical Inc,3,601
+Optonol Limited,3,604
+Origio A/S,3,605
+Ortho-Clinical Diagnostics Inc,3,606
+OrthoPediatrics Co,3,794
+Parker Labs Inc,3,1333
+Permedica SPA,3,608
+Pioneer Surgical Technology,3,802
+Pivot Medical,3,609
+Prima Medical Ltd,3,610
+Prius Healthcare Solution (Shanghai) Ltd,3,611
+PVB Critical Care GmbH,3,612
+Salter Labs,3,614
+SG Manufacturers,3,821
+Southern Cross Hospital Supplies,3,618
+Spiration Inc,3,619
+The Laryngeal Mask Company Limited,3,624
+Tianjin Medis Medical Device Co Ltd,3,1485
+Tissue Science Laboratories plc,3,625
+Uresil LLC,3,842
+Vascutek Ltd a Terumo Company,3,628
+Vitatron BV,3,630
+Weihai Wego Qiquan Medical Devices Co Ltd,3,631
+Well Lead Medical Co Ltd,3,632
+WickiMed Medical Equipment Manufacturing Co Ltd.,3,633
+7 Med Industrie,2,637
+A & I Industries,2,638
+A L N,2,639
+AAXIS Medical Products SIP Co Ltd,2,640
+Advanced Medical Solutions Plymouth Ltd,2,645
+Aircraft Medical Ltd,2,648
+Alcon-Grieshaber AG,2,653
+Allegro Concepts Pty Ltd,2,654
+Allergan Pharmaceuticals Ireland,2,657
+Ansell Healthcare Europe NV,2,661
+Atom Medical Corporation,2,667
+Augustine Biomedical & Design LLC,2,668
+Barrx Medical Inc,2,671
+Bentley InnoMed GmbH,2,674
+Bien Air Surgery SA,2,675
+Bio-Rad,2,676
+Boddingtons Plastics Ltd,2,680
+Budelpack Copackers BV,2,681
+Cameron Health Inc,2,983
+Carestream Health Inc,2,683
+Changzhou Waston Medical Applications Co Ltd,2,686
+Church & Dwight Co Inc,2,687
+CIVCO Medical Solutions Inc,2,688
+Coltene/Whaledent AG,2,1000
+Denyers Pty Ltd T/a Denyers International,2,697
+Diagnostic Grifols SA,2,705
+DJO LLC,2,708
+Dornier MedTech GmbH,2,709
+ELA Medical,2,710
+Etac AS Etac Supply Gjovik,2,712
+Famidoc Technology Co Ltd,2,1084
+Flaem Nuova SPA,2,715
+Flen Pharma NV,2,716
+Fluoron GmbH,2,717
+Forme Medical Pty Ltd,2,718
+Gebr Brasseler GmbH & Co KG,2,723
+Gebruder Martin GmbH & Co KG,2,1102
+Getinge Disinfection AB,2,724
+GMS (Gesell Medizin Sondete),2,728
+Hamilton Med AG,2,729
+Hangzhou MedStar Technology Co Ltd,2,730
+Hangzhou Optcla Medical Instrument Co Ltd,2,1121
+Hansen Medical Inc,2,731
+Haupt Pharma Wolfratshausen GmbH,2,732
+Heine Optotechnik GmbH & Co KG,2,733
+Hillrom-Hillenbrand,2,736
+Hitachi High-Technologies Co,2,737
+Howard Wright Limited (NZ),2,738
+Huzhuo Dragon Wise Fashion Co Ltd,2,740
+HyperBranch Medical Technology Inc,2,741
+Imaxeon Pty Ltd,2,742
+Integra York PA Inc,2,745
+International Techynidyne Corp (ITC),2,746
+Intersurgical Ltd,2,1163
+Iridex Corporation,2,748
+Jmac Industries,2,750
+Junten Keep-Warm Products Kunshan Co Ltd,2,753
+Kasios SAS,2,754
+Kaz Europe Sarl,2,755
+Kenex Electro Medical Ltd,2,756
+Laerdal Medical AS,2,758
+Latexx Manufacturing Sdn Bhd,2,759
+LDR Medical,2,1210
+Lucas Medical Inc,2,765
+M A Arain & Brothers (Pvt) Ltd,2,767
+Mac's Metalcraft Pty Ltd,2,768
+Max Mobility,2,769
+Medical Developments International Limited,2,770
+Medrad Inc,2,773
+Megadyne Medical Products Inc,2,776
+Melcare Biomedical Pty Ltd,2,777
+Merz North America Inc,2,779
+Mizuho OSI,2,780
+Natus Medical Inc,2,781
+Naveh Pharma Ltd,2,782
+NDI Medical LLC,2,783
+NeoMetrics Inc,2,784
+Nikkiso Europe GmbH,2,785
+Nucletron BV,2,787
+NxThera Inc,2,788
+Oberon GmbH Fiber Technologies,2,789
+Optimed Medizinische Instrumente,2,1316
+Ormco Corporation,2,792
+Orthodynamics GmbH,2,793
+Oventus Pty Ltd,2,796
+Ovesco Endoscopy AG,2,797
+Parker Hannifin Corporation Porter Instrument Division,2,798
+Paul Hartmann Pty Ltd,2,799
+Penlon Ltd,2,800
+Pihsiang Machinery Mfg Co Ltd,2,801
+Piramal Healthcare Canada Ltd Bio-Orthopaedics Division,2,803
+Pirrone SRL,2,804
+Poly Medicure Ltd,2,805
+Prodimed SAS - Division Plastimed,2,807
+Pulmonx Inc,2,808
+Pyng Medical Corporation,2,809
+R82 AS,2,811
+Respironics Respiratory Drug Delivery UK Ltd,2,812
+Rita Medical Systems Inc,2,813
+Roche Molecular Systems Inc,2,814
+Rocket Medical Plc,2,815
+Sanofi-Aventis Deutschland GmbH,2,817
+Select Medical Equipment Pty Ltd,2,819
+Septodont,2,820
+Shanghai ISO Medical Products Co Ltd,2,1397
+Sirona Dental Systems,2,823
+Sorin Biomedica Crm Srl,2,1424
+Summit Medical Products Inc,2,829
+Swemac Innovation AB,2,830
+Terumo (Philippines) Corporation,2,832
+Terumo Cardiovascular Systems Corporation,2,833
+The Anspach Effort Inc,2,834
+Theragenics Corporation,2,835
+Top Glove Sdn Bhd,2,837
+Top-Bound Enterprise Co Ltd,2,838
+Touchstone International Medical Science Co Ltd,2,839
+Ulrich GmbH & Co KG,2,841
+Veldana Medical SA,2,843
+Veniti Inc,2,844
+W & H Dentalwerk Burmoos GmbH,2,845
+Willy Rusch GmbH,2,848
+WOM World of Medicine GmbH,2,849
+Woo Young Medical Co Ltd,2,850
+Ypsomed AG,2,851
+126554,1,853
+3-D Matrix Europe SAS,1,854
+3M Healthcare,1,855
+3M Medical Devices and Materials Manufacturing,1,856
+3M Unitek,1,857
+A-Spine Asia Co Ltd,1,858
+Abbott Vascular Instruments Deutschland GmbH,1,862
+Abiomed Europe GmbH,1,865
+Accriva dba International Technidyne Corporation ITC,1,866
+Ace Medical Co Ltd,1,867
+Acon Biotech (Hangzhou) Co Ltd,1,868
+Acra-Cut Inc,1,869
+AcroMetrix Co,1,870
+Active Optical Systems Ltd,1,871
+AcuFocus Inc,1,872
+ADEC Inc,1,874
+Advanced Vision Research Inc,1,880
+Agfa Gevaert NV (Belgium),1,881
+Aid United Yangzhou Medical Devices Co Ltd,1,882
+Airxpanders Inc,1,883
+Albert Browne Ltd,1,884
+Alcon Huntington,1,888
+Alcon Optonol Limited,1,896
+Aldwin Paige Ltd,1,898
+Altera Tibbi Malzeme San VE Tic AS,1,905
+AM BI SRL,1,907
+AMG Medical Inc,1,909
+Ami Agency For Medical Innovations GmbH,1,910
+Amnisure International LLC,1,911
+Analytica Ltd,1,914
+Andon Health Co Ltd,1,915
+AngioDynamics Inc also trading as RITA Medical Systems,1,916
+Ansell NP Sdn Bhd T/a Ansell Malaysia Sdn Bhd Ansell Medical Sdn Bhd,1,919
+Apex Guangzhou Tools & Orthopedic Co,1,920
+ArcRoyal,1,922
+Ares Trading SA an Affiliate of Merck KGaA Darmstadt Germany,1,924
+Arkray Factory Inc,1,927
+Ascensia Diabetes Care Holdings AG,1,929
+AT-OS Srl,1,932
+Australian Comfort Group,1,933
+Australian Therapeutic Supplies Pty Ltd,1,934
+B Braun Medical Ltd (T/A Aesculap Downs Surgican & William Skidmore),1,935
+Baldwin Medical & Veterinary Devices (Australia) Pty Ltd,1,937
+Bard Medical Division,1,938
+Barron Precision Instruments LLC,1,939
+Bausch & Lomb Inc (United States of America),1,940
+Baxter Healthcare Corporation Cellular Therapies Division,1,942
+Baylis Medical Company Inc,1,944
+BBI Solutions OEM Ltd,1,945
+Beijing ADSS Development Co Ltd,1,953
+Beijing Sincoheren Science and Technology Development Co Ltd,1,954
+Bellco S.r.l.,1,955
+Berchtold GmbH & Co,1,957
+Besmed Health Business Corp,1,958
+BHM Medical Inc,1,959
+Bio-Technology General (Israel) Ltd,1,960
+Biocompatibles UK Ltd,1,961
+Bioelectronics Corporation,1,962
+Bioflow Ltd,1,963
+Biomet 3i LLC T/a Implant Innovations,1,965
+Biorad Medisys Pvt Ltd,1,971
+Blink Medical Ltd,1,974
+Blue Cross Bio-Medical Beijing Co Ltd,1,975
+BPR Medical Ltd,1,977
+BSN medical (Aust.) Pty Ltd,1,979
+BSN-Jobst GmbH,1,980
+Cair LGL,1,982
+Cascade Medical Enterprises UK Ltd,1,987
+CBM Srl a socio unico,1,988
+Cefla SC,1,989
+Changzhou Kanghui Medical Innovation Co Ltd,1,990
+Chien Ti Enterprise Co Ltd,1,991
+China HuaMei Industrial Co Ltd,1,992
+Citizen Systems Japan Co Ltd,1,993
+ClearCorrect,1,994
+ClearPath Orthodontics Pvt Ltd,1,995
+Clement Clarke International Ltd,1,996
+Cobes Industries Hefei Co Ltd,1,997
+Cominox srl,1,1001
+Consultronix SA,1,1004
+Cook Urological Incorporated,1,1007
+Cook Vascular Incorporated,1,1008
+CooperVision Manufacturing Ltd also trading as Aspect Vision Holdings Ltd CooperVision CooperVision Ltd Hydron and Sauflon Pharmaceuticals Ltd,1,1009
+Corpak MedSystems Inc,1,1011
+Cortex Dental Implants Industries Ltd,1,1012
+Covidien llc (Formerly known as Tyco),1,1015
+Cyclomedica Australia Pty Ltd,1,1020
+CyDen Limited,1,1021
+Dako North America Inc,1,1022
+Dansac AS,1,1024
+Darco International Inc,1,1025
+dB Sonic Pty Ltd,1,1026
+Deerfield Imaging Inc,1,1027
+Degania Silicone Limited,1,1029
+Dentsply Caulk,1,1030
+Dentsply Sirona Pty Ltd,1,1031
+Devilbiss Healthcare (USA),1,1044
+DGH Technology Inc,1,1045
+Discus Dental LLC,1,1048
+Dispo-Med (Malaysia) Sdn Bhd,1,1049
+Dmg Chemisch-Pharmazeutische Fabrik GmbH,1,1050
+Dongguan Maikang Electric Appliance Co Ltd,1,1051
+DORC International B.V,1,1052
+DT Davis Enterprises Ltd,1,1053
+Duckworth & Kent Ltd,1,1054
+Durr Dental AG,1,1055
+Eagle Health Supplies,1,1056
+Eagle Vision Inc,1,1057
+Eizo Corporation,1,1060
+EKOS Corporation,1,1061
+Elekta Instrument AB,1,1062
+Elmdown Srl Unipersonale,1,1063
+Emerald Nonwovens International Co Ltd,1,1064
+EMS Electro Medical Systems SA,1,1065
+Encore Medical LP,1,1066
+EndoChoice,1,1067
+Endologix (TriVascular Inc),1,1068
+Endoscopic Technologies Inc dba Estech,1,1070
+Enterix Pty Ltd,1,1072
+Enztec Limited (NZ),1,1073
+Esco Industries Pty Ltd,1,1074
+Estar Electronic Co Ltd,1,1076
+ETView Ltd,1,1081
+Evolutis,1,1083
+Farmigea SPA,1,1085
+Flexbar Machine Corporation,1,1088
+Forerunner Medical Shanghai Co Ltd,1,1089
+Foshan Nanhai Plus Medical Co Ltd,1,1090
+Gambro Kathetertechnik Hechingen Zweigniederlassung Gambro Dialysatoren GmbH,1,1093
+Gardia Medical Ltd,1,1095
+GCMedica Enterprise Ltd Wuxi,1,1096
+GE Healthcare Japan Corporation,1,1097
+GE Hualun Medical Systems Co Ltd,1,1098
+GE Hungary KTF,1,1099
+GE Medical Systems Ultrasound and Primary Care Diagnostics LLC,1,1100
+GE Vingmed Ultrasound AS,1,1101
+Genzyme Corporation,1,1104
+Geomed Medizin-Technik GmbH & Co,1,1105
+Getinge Lancer SAS,1,1106
+GN Hearing AS,1,1108
+GN Resound AS,1,1109
+Golden Sun International Co Ltd,1,1110
+Grahams Natural Alternatives Pty Ltd,1,1111
+Groupe Lepine,1,1113
+Guangzhou Fortunique Ltd,1,1114
+Guangzhou Sunlight Medical Equipment Co Ltd,1,1115
+Haemoband Surgical Ltd,1,1117
+Haemologic Biotech Pty Ltd,1,1118
+Hangzhou Hua'An Medical & Health Instruments Co Ltd,1,1120
+Hankook Latex Gongup Company Ltd,1,1123
+Harris Calorific SRL,1,1124
+Hemoteq AG,1,1128
+Heraeus Medical Components LLC,1,1129
+Hersill SL,1,1131
+Hills Healthcare Equipment a Division of Hills Holdings Ltd,1,1134
+Hitec Medical Co Ltd,1,1135
+HL Corp Shenzhen,1,1136
+Hollister Incorporated,1,1137
+Hoya Photonics Inc DBA Hoya Conbio,1,1141
+HS Hospital Service SPA,1,1142
+Hsiner Co Ltd,1,1143
+Hu Friedy Mfg Co Inc,1,1144
+Hubdic Co Ltd,1,1145
+Hyaltech Ltd,1,1146
+I-Flow Corporation,1,1147
+Implant Direct Sybron Manufacturing LLC,1,1150
+Industria Farmaceutica Galenica Senese Srl,1,1151
+Industry,1,1152
+Inmed Manufacturing Sdn Bhd,1,1153
+Inova Labs Inc,1,1154
+Institut Straumann AG,1,1156
+Intco Industries Co Ltd,1,1157
+Integra Luxtec Inc,1,1159
+Integra MicroFrance SAS,1,1160
+Integra NeuroSciences Implants SAS,1,1161
+Intrinsic Therapeutics Inc,1,1166
+Invacare France Operations,1,1169
+Invacare Poirier SAS,1,1170
+Invacare Rehabilitation Equipment Suzhou Co Ltd,1,1171
+Invamed Saglik llac San ve Tic AS,1,1173
+ISO Med s a r l,1,1175
+Isoaid LLC,1,1176
+Istanbul Medikal Limited Sirketi,1,1177
+Ivoclar Vivadent AG,1,1178
+Jan Mao Industries Company Limited,1,1179
+Jerome Group Inc,1,1180
+Jiangsu Province JianErKang Medical Dressing Co Ltd,1,1181
+Jimmy Brothers Group,1,1182
+JMAC (WA) Pty Ltd trading as PharmAust Manufacturing,1,1183
+Johnson & Johnson do Brasil Industria e Comercio de Produtos para Saude Ltda,1,1184
+Kai Industries Co Ltd,1,1191
+Kaltenbach & Voigt GmbH,1,1192
+Karma Medical Products Co Ltd,1,1193
+Kaypentax,1,1194
+Kelbor Pty Ltd T/a Medi-Ice Pak Australia,1,1195
+Keymed Ltd,1,1196
+Kimal PLC,1,1197
+Kimberly-Clark NV (now known as Halyard Health Inc,1,1198
+Kingstar Industries Wuhan Co Ltd,1,1201
+Koninklijke Utermohlen Nv,1,1203
+Koo Shanghai Industries Co Ltd,1,1204
+Kuraray Noritake Dental Inc,1,1205
+Landanger ZI La Vendue,1,1208
+LED SPA,1,1212
+Leica Microsystems Ltd,1,1214
+Les Entreprises Solumed Inc,1,1215
+LF BEAUTY THAILAND LTD,1,1216
+Lifestream Purification Systems LLC,1,1219
+LightGuideOptics Germany GmbH,1,1220
+LightLab Imaging,1,1221
+Lima Lto SPA,1,1224
+Lina Medical APS,1,1227
+Lisa Laser Products Ohg,1,1228
+LSI Solutions,1,1230
+Luxometrix-IPC EU,1,1231
+Mabis Healthcare Inc,1,1232
+Mallinckrodt Dar SRL,1,1233
+Mallinckrodt Medical Imaging Ireland,1,1234
+Mansell Neonatal Transport Equipment Pty Ltd,1,1235
+Marketing Sales Pty Ltd,1,1238
+Master & Frank Pinghu Co Ltd,1,1239
+Maxter Catheters,1,1243
+McKesson Israel Ltd,1,1244
+Med-Con Pty Ltd,1,1245
+Med-Imaps SASU,1,1246
+Medennium Inc,1,1247
+Medi-Globe GmbH,1,1248
+Medical Concepts Australia Pty Ltd,1,1250
+Medical Intelligence Medizintechnik GmbH,1,1251
+Medical Technique Inc,1,1253
+Medical Wire & Equipment Co (Bath) Ltd,1,1254
+Medicom Innovation Partner A/S,1,1256
+Medivators Inc,1,1258
+"MedPlast Medical, Inc.",1,1261
+Medsell Sales Pty Ltd T/A Denyers International,1,1262
+Merck Millipore Ltd,1,1271
+Merits Healthcare Industries (Suzhou) Co Ltd,1,1272
+Messer Cutting & Welding GmbH,1,1273
+Meytec GmbH Informationssysteme,1,1276
+Micro-Tech Nanjing Co Ltd,1,1278
+Microsulis Holdings Ltd incorporating Microsulis Medical Ltd,1,1279
+Microsulis Medical Ltd,1,1280
+Microtek Medical Inc,1,1281
+Milestone Scientific Inc,1,1282
+Miltenyi Biotec GmbH,1,1283
+Mipm Mammendorfer Institut Fur Physik und Medizin GmbH,1,1285
+Misonix Incorporated,1,1286
+Moberg Derma AB,1,1287
+Morris Surgical Pty Ltd,1,1288
+MTP Medical Technical Promotion GmbH,1,1290
+Nanjing Jinzhou Sanitary Commodity Company Limited,1,1291
+Nasalprodukter Sverige AB,1,1292
+Natus Medical Denmark ApS,1,1293
+Nihon Kohden Corp,1,1294
+Ningbo Greatcare Trading Co Ltd,1,1295
+Ningbo Runyes Medical Instrument Co Ltd,1,1296
+Ningbo Shengyurui Medical Appliances Co Ltd,1,1297
+Nobel Biocare AB,1,1298
+Nonin Medical Inc,1,1299
+Norian Corporation a Synthes Company,1,1300
+Nortec NZ,1,1301
+Novos Medical Systems Industry Trade Import and Export Ltd Co,1,1303
+Nowra Chemical Manufacturers Pty Ltd T/A Nowchem Pharma,1,1304
+Oasis Medikal Urunler,1,1305
+"Observer Electronics Technology Co.,Ltd”",1,1306
+Oculus Technologies of Mexico SA de CV,1,1308
+Officina Farmaceutica Italiana SpA,1,1309
+Oncology Systems Ltd,1,1313
+Ophtec BV,1,1314
+Optima Pharmazeutische GmbH,1,1315
+Optimized Ortho Ltd,1,1318
+Organon Ireland Ltd,1,1319
+Orthalign Inc,1,1320
+Orthofix SRL,1,1321
+Orthovita Inc,1,1323
+Osteomed LP,1,1324
+Otto Bock Mobility Solutions GmbH,1,1327
+Pall Medical,1,1328
+Pall Medical A Division of Pall International Sarl,1,1329
+Palmedic BV,1,1330
+Paradigm Spine GmbH,1,1331
+Pari Pharma GmbH,1,1332
+Parkhouse Healthcare Ltd,1,1334
+PCT Remote Sensing Pty Ltd,1,1335
+Pelican Manufacturing Pty Ltd,1,1336
+Permobil AB,1,1337
+Perouse Plastie S.A.S,1,1338
+Pfm Medical Mepro GmbH,1,1339
+pfm medical titanium GmbH,1,1340
+Pharmaceutical Innovations Inc,1,1341
+Philips Digital Mammography Sweden AB,1,1342
+Philips Healthcare Informatics Inc,1,1343
+"Philips Respironics, Inc",1,1346
+Phoenix Healthcare Ltd,1,1348
+Physiol SA,1,1350
+Plan 1 Health Srl,1,1352
+Precision Medical Inc,1,1353
+Prestige Sporting Goods Co Ltd,1,1354
+Prima Dental Manufacturing T/a Prima Dental Group SS White Group SS White Manufacturing and AD Burs,1,1355
+Proctor And Gamble Hyginett KFT,1,1358
+Protection Cover Ultrasound BV PCU,1,1359
+PSM Healthcare Limited trading as API Consumer Brands,1,1360
+Pu Yuan Biotech Co Ltd,1,1361
+Puranox Trading BV,1,1362
+Quantel Medical,1,1363
+Quidel Corporation,1,1364
+R Poon Medical Products Co Ltd,1,1366
+Ranfac Corporation,1,1367
+Redsense Medical AB,1,1368
+Regen Lab SA,1,1369
+Resonance Technology Inc,1,1373
+Richard Wolf GmbH,1,1376
+Rigidyne Pty Ltd,1,1378
+Rimkus Medizintechnik,1,1379
+Romar Engineering Pty Ltd,1,1381
+Rudolf Riester GmbH & Co KG,1,1382
+S&S Med Co Ltd,1,1383
+Sadra Medical Inc a subsidiary of Boston Scientifi,1,1384
+Safapac Ltd,1,1385
+Sage In-Vitro Fertilization Inc - A Cooper Surgical Company,1,1386
+Sage Medical Pty Ltd,1,1387
+Sauflon Pharmaceuticals Ltd,1,1390
+Savion Industries Ltd,1,1391
+Sequent Medical Inc,1,1392
+Serres Oy,1,1393
+Shanghai Binghang Industry Company Ltd,1,1395
+Shanghai Chuangshi Industry Co Ltd,1,1396
+Shanghai Shenfeng Medical & Health Articles Co Ltd,1,1398
+Shanghai Xinghua Medical Equipment Co Ltd,1,1399
+Shenzhen Kingyield Technology Co Ltd,1,1401
+ShenZhen must Biological Science & Technology Co Ltd,1,1402
+Shield Medicare Limited - A Division of ECOLAB,1,1403
+Shukla Medical,1,1404
+SI-Bone Inc,1,1405
+Siemens Shanghai Medical Equipment Ltd,1,1408
+Sihong Surgitrac Co Ltd,1,1409
+Single Use Surgical Ltd,1,1410
+Sino Medical Device Technology Co Ltd,1,1411
+Small Bone Innovations Inc,1,1412
+Smiths Medical Australasia,1,1417
+Soft Medical Aesthetics,1,1419
+Solo Gyn,1,1421
+SOOIL Development Co Ltd,1,1422
+SP Industrial,1,1428
+SPD Swiss Precision Diagnostics GmbH,1,1431
+Specialist Hygiene Solutions Ltd,1,1432
+Spectranetics Corporation,1,1433
+Spes Medica SRL,1,1434
+Spraypack Pty Ltd,1,1435
+Starkey Laboratories Inc,1,1436
+SteriTec Products Manufacturing Company Incorportaed,1,1437
+StrideOn Ltd,1,1439
+Stryker Communications,1,1441
+Stryker Medtech KK,1,1447
+Sunrise Medical (England),1,1452
+Sunrise Medical HHG Inc,1,1453
+SunTech Medical Inc,1,1454
+Supermax Glove Manufacturing Sdn Bhd,1,1455
+Surgi Supplies International Pty Ltd,1,1456
+Surgical Specialties Corporation,1,1457
+Surgical Specialties Mexico S de RL de CV,1,1458
+Suzhou Youbetter Medical Apparatus Co Ltd,1,1460
+Synapse Biomedical Inc,1,1461
+Sysmex Corporation,1,1463
+TAG Medical Products Corporation Ltd,1,1465
+Taiwan Armada Enterprise Co Ltd,1,1467
+Talley Group Ltd,1,1469
+TauroPharm GmbH,1,1470
+Techstyles A Division of Encompass Group LLC,1,1471
+Teknimed SAS,1,1472
+Tekno-Medical Optik-Chirurgie GmbH,1,1473
+TeleMed Systems Inc,1,1475
+Terumo Europe NV,1,1476
+Thai Centri Co Ltd,1,1477
+Thai Nippon Rubber Industry Co Ltd,1,1478
+The Binding Site Group Ltd,1,1479
+The Marena Group Inc,1,1480
+The Surgical Company International BV,1,1481
+Thompson Surgical Instruments Inc,1,1482
+Thoratec Switzerland GmbH,1,1483
+Tiller Mind Body Inc,1,1487
+Tobrix BV,1,1488
+Town & Country Mattress & Beds,1,1489
+Trendpac,1,1490
+Trimed Inc,1,1491
+Trividia Health Inc,1,1492
+True Source Technology Co Ltd,1,1493
+Trumpf Medizin Systeme GmbH & Co KG,1,1494
+Truphatek International Ltd,1,1495
+Tubalco Manufacturing Pty Ltd,1,1496
+Tyco Healthcare Pty Ltd,1,1497
+U-Systems Inc,1,1498
+Unipath Ltd,1,1500
+United States Endoscopy Group Inc,1,1501
+Unitron Hearing Ltd,1,1502
+Uroplasty Inc,1,1505
+Ursapharm Arzneimittel GmbH,1,1506
+Utah Medical Products Inc,1,1507
+V Guldmann,1,1508
+Vadi Medical Technology Co Ltd,1,1509
+Vadi Medical Technology Co Ltd Yangmei,1,1510
+Valeo Corporation Taiwan,1,1511
+Ventana Medical Systems Inc,1,1516
+Verathon Inc,1,1517
+Viasys Medsystems,1,1519
+Vision Medical Devices India Pvt Ltd,1,1520
+Vision Sciences Inc,1,1521
+Vita Zahnfabrik H Rauter GmbH & Co K,1,1522
+Vital Healthcare Sdn Bhd,1,1523
+Vyaire Medical Oy,1,1525
+West Pharma Services IL Ltd,1,1531
+Wintur Healthcare,1,1533
+Wolfe Tory Medical Inc,1,1534
+Wuppertal,1,1536
+Wuxi Bolcom Medical Machinery and Plastic Co Ltd,1,1537
+X-Spine Systems Inc,1,1538
+Xodus Medical Inc,1,1539
+Yafho Bio-Technology Co Ltd,1,1540
+Yong Long Healthcare Equipment,1,1542
+Zeltiq Aesthetics Inc,1,1544
+Zhejiang Shuyou Surgical Instrument Co Ltd,1,1545
+Zhejiang Vitalcare Medical Devices Co Ltd,1,1546
+Zhuji Pengtian Medical Instrument Co Ltd,1,1547

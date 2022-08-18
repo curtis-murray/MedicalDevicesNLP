@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Curtis Murray" />
+
+
+<title>Pelvic mesh recall signal</title>
+
+<script src="Significance_files/header-attrs-2.8/header-attrs.js"></script>
+<script src="Significance_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="Significance_files/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="Significance_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="Significance_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="Significance_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="Significance_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="Significance_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="Significance_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="Significance_files/navigation-1.1/tabsets.js"></script>
+<script src="Significance_files/navigation-1.1/codefolding.js"></script>
+<link href="Significance_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="Significance_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="resources/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Pelvic mesh recall signal</h1>
+<h4 class="author">Curtis Murray</h4>
+
+</div>
+
+
+<style type="text/css">
+script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+$('body').prepend('<div class=\"zoomDiv\"><img src=\"\" class=\"zoomImg\"></div>');
+// onClick function for all plots (img's)
+$('img:not(.zoomImg)').click(function() {
+$('.zoomImg').attr('src', $(this).attr('src')).css({width: '100%'});
+$('.zoomDiv').css({opacity: '1', width: 'auto', border: '1px solid white', borderRadius: '5px', position: 'fixed', top: '50%', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)', boxShadow: '0px 0px 50px #888888', zIndex: '50', overflow: 'auto', maxHeight: '100%'});
+});
+// onClick function for zoomImg
+$('img.zoomImg').click(function() {
+$('.zoomDiv').css({opacity: '0', width: '0%'}); 
+
+});
+
+$('.my_card').on('click',function(e) {
+$(this).addClass('active');
+e.stopPropagation()
+});
+$(document).on("click", function(e) {
+if ($(e.target).is(".my_card") === false) {
+$(".my_card").removeClass("active");
+}
+});
+});
+</script>
+<p>Testing for statistical significance between pelvic mesh reports and other reports to identify a potential signal that could have been used to recall pelvic mesh devices prior to the 2018 recall.</p>
+<div id="fisher-test-of-pain" class="section level2">
+<h2>Fisher test of pain</h2>
+<div id="pain-in-pelvic-mesh-devices-and-hernia-mesh-devices" class="section level3">
+<h3>Pain in pelvic mesh devices and hernia mesh devices</h3>
+<p>First we look at mentions of pain in pelvic mesh devices and hernia mesh devices. We construct a contingency table counting the number of reports that have mentions of the word `pain’ for both devices.</p>
+<pre><code>##        pain no pain
+## pelvic   70      34
+## hernia    4      44</code></pre>
+<p>We use Fisher’s exact test to test the null hypothesis that the odds ratio is equal to one for</p>
+<p><span class="math display">\[ Odds Ratio = \frac{Pain_P / NoPain_P}{Pain_H / NoPain_H}\]</span></p>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  pain_table
+## p-value = 3.128e-12
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   7.22406 91.67797
+## sample estimates:
+## odds ratio 
+##   22.14368</code></pre>
+<p>We reject the null hypothesis that the odds ratio is equal to one <span class="math inline">\(\left(p = 3e-12\right)\)</span>, with a <span class="math inline">\(95\%\)</span> confidence interval of <span class="math inline">\((7.22, 91.7)\)</span>. The odds ratio can be interpreted as how many times greater the ratio of pain to no pain documents is between pelvic mesh and hernia mesh devices is.</p>
+</div>
+<div id="pain-in-pelvic-mesh-devices-and-all-other-devices" class="section level3">
+<h3>Pain in pelvic mesh devices and all other devices</h3>
+<pre><code>##        pain no pain
+## pelvic   70      34
+## other  1278   13790</code></pre>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  pain_table
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  14.47034 34.65872
+## sample estimates:
+## odds ratio 
+##   22.20954</code></pre>
+</div>
+</div>
+<div id="fisher-test-of-pain-topic" class="section level2">
+<h2>Fisher test of pain topic</h2>
+<div id="pain-topic-in-pelvic-mesh-devices-and-hernia-mesh-devices" class="section level3">
+<h3>Pain topic in pelvic mesh devices and hernia mesh devices</h3>
+<p>We can do the same thing but looking at a `pain’ topic.</p>
+<p>As a start, I’ve picked the below topic, and set a threshold of <span class="math inline">\(0.05\)</span> to indicate its presence in a document.</p>
+<p><img src="Significance_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>##        pain threshold no pain threshold
+## pelvic             85                92
+## hernia              2                55</code></pre>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  pain_table
+## p-value = 3.883e-11
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##    6.300206 218.558317
+## sample estimates:
+## odds ratio 
+##   25.16453</code></pre>
+</div>
+<div id="pain-topic-in-pelvic-mesh-devices-and-all-other-devices" class="section level3">
+<h3>Pain topic in pelvic mesh devices and all other devices</h3>
+<pre><code>##        pain threshold no pain threshold
+## pelvic             48                56
+## other             100             14968</code></pre>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  pain_table
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   81.0544 203.0168
+## sample estimates:
+## odds ratio 
+##   127.6897</code></pre>
+</div>
+</div>
+<div id="disproportionality-analysis" class="section level2">
+<h2>Disproportionality analysis</h2>
+<div id="pain-in-pelvic-mesh-devices-and-hernia-mesh-devices-1" class="section level3">
+<h3>Pain in pelvic mesh devices and hernia mesh devices</h3>
+<pre><code>##         time nA nB nC nD event
+## 1 2012-01-01  3  4  0  2     3
+## 2 2013-01-01  3 10  0  9     3
+## 3 2014-01-01 16  9  2 19    16
+## 4 2015-01-01  1  1  0  4     1
+## 5 2016-01-01  9  3  0  6     9
+## 6 2017-01-01 38  7  2  4    38</code></pre>
+<pre><code>##                       test_name analysis_of run_status
+## 1  Proportional Reporting Ratio          NA       TRUE
+## 2 x-bar Western Electric Rule 1          NA       TRUE
+## 3 x-bar Western Electric Rule 2          NA       TRUE
+## 4                  Poisson Rare          NA      FALSE
+## 5                         BCPNN          NA       TRUE
+##                                          run_msg ref_time_start ref_time_end
+## 1                                        Success     2017-01-01   2017-01-01
+## 2                                        Success     2012-01-01   2017-01-01
+## 3                                        Success     2012-01-01   2017-01-01
+## 4 Minimum zero_rate of 0.666666666666667 not met     2012-01-01   2017-01-01
+## 5                                        Success     2017-01-01   2017-01-01
+##   eval_period                                      test_hyp  test_params signal
+## 1           1       Two-sided test at alpha=0.05 of PRR &gt; 1   1, 0.05, 0  FALSE
+## 2           6                       1 point &gt; 3-sigma limit 0.333333....   TRUE
+## 3           6                 2 of 3 points &gt; 2-sigma limit 0.333333....  FALSE
+## 4           6                   Poisson test p-value &lt;=0.05 0.666666....     NA
+## 5           1 5% quantile of the posterior distribution &gt; 1    1, 0.9, 0  FALSE
+##   signal_threshold         stat     stat_lcl     stat_ucl   p_value
+## 1             0.05 2.533333.... 0.811413.... 7.909375.... 0.1095525
+## 2     30.32812.... 3.961864.... -9.23275.... 22.03275....        NA
+## 3     22.35208.... -0.67702.... -9.23275.... 22.03275....        NA
+## 4               NA           NA           NA           NA        NA
+## 5                1 1.158914.... 0.864024.... 1.554450.... 0.2043595
+##     stat_addtl
+## 1 1.787619....
+## 2 6.4, 7.9....
+## 3 6.4, 7.9....
+## 4           NA
+## 5 c(0.8640....</code></pre>
+</div>
+<div id="pain-topic-in-pelvic-mesh-devices-and-hernial-mesh-devices" class="section level3">
+<h3>Pain topic in pelvic mesh devices and hernial mesh devices</h3>
+<pre><code>##         time nA nB nC nD event
+## 1 2012-01-01  3  4  0  2     3
+## 2 2013-01-01  3 10  1  8     3
+## 3 2014-01-01 20  5  3 18    20
+## 4 2015-01-01  1  1  2  2     1
+## 5 2016-01-01  9  3  1  5     9
+## 6 2017-01-01 41  4  1  5    41</code></pre>
+<pre><code>##                       test_name analysis_of run_status
+## 1  Proportional Reporting Ratio          NA       TRUE
+## 2 x-bar Western Electric Rule 1          NA       TRUE
+## 3 x-bar Western Electric Rule 2          NA       TRUE
+## 4                  Poisson Rare          NA      FALSE
+## 5                         BCPNN          NA       TRUE
+##                                          run_msg ref_time_start ref_time_end
+## 1                                        Success     2017-01-01   2017-01-01
+## 2                                        Success     2012-01-01   2017-01-01
+## 3                                        Success     2012-01-01   2017-01-01
+## 4 Minimum zero_rate of 0.666666666666667 not met     2012-01-01   2017-01-01
+## 5                                        Success     2017-01-01   2017-01-01
+##   eval_period                                      test_hyp  test_params signal
+## 1           1       Two-sided test at alpha=0.05 of PRR &gt; 1   1, 0.05, 0  FALSE
+## 2           6                       1 point &gt; 3-sigma limit 0.333333....   TRUE
+## 3           6                 2 of 3 points &gt; 2-sigma limit 0.333333....  FALSE
+## 4           6                   Poisson test p-value &lt;=0.05 0.666666....     NA
+## 5           1 5% quantile of the posterior distribution &gt; 1    1, 0.9, 0  FALSE
+##   signal_threshold         stat     stat_lcl     stat_ucl    p_value
+## 1             0.05 5.466666.... 0.911329.... 32.79214.... 0.06311466
+## 2     36.44548.... 3.467201.... -11.9067.... 26.30670....         NA
+## 3     26.69699.... -0.63599.... -11.9067.... 26.30670....         NA
+## 4               NA           NA           NA           NA         NA
+## 5                1 1.206974.... 0.928212.... 1.569455.... 0.11934633
+##     stat_addtl
+## 1 2.494423....
+## 2 7.2, 9.7....
+## 3 7.2, 9.7....
+## 4           NA
+## 5 c(0.9282....</code></pre>
+</div>
+<div id="pain-topic-in-pelvic-mesh-devices-and-all-other-devices-1" class="section level3">
+<h3>Pain topic in pelvic mesh devices and all other devices</h3>
+<pre><code>##         time nA nB  nC   nD event
+## 1 2012-01-01  3  4 121  944     3
+## 2 2013-01-01  3 10 235 2244     3
+## 3 2014-01-01 20  5 436 2711    20
+## 4 2015-01-01  1  1 250 2323     1
+## 5 2016-01-01  9  3 240 2443     9
+## 6 2017-01-01 41  4 303 2818    41</code></pre>
+<pre><code>##                       test_name analysis_of run_status
+## 1  Proportional Reporting Ratio          NA       TRUE
+## 2 x-bar Western Electric Rule 1          NA       TRUE
+## 3 x-bar Western Electric Rule 2          NA       TRUE
+## 4                  Poisson Rare          NA      FALSE
+## 5                         BCPNN          NA       TRUE
+##                                          run_msg ref_time_start ref_time_end
+## 1                                        Success     2017-01-01   2017-01-01
+## 2                                        Success     2012-01-01   2017-01-01
+## 3                                        Success     2012-01-01   2017-01-01
+## 4 Minimum zero_rate of 0.666666666666667 not met     2012-01-01   2017-01-01
+## 5                                        Success     2017-01-01   2017-01-01
+##   eval_period                                      test_hyp  test_params signal
+## 1           1       Two-sided test at alpha=0.05 of PRR &gt; 1   1, 0.05, 0   TRUE
+## 2           6                       1 point &gt; 3-sigma limit 0.333333....   TRUE
+## 3           6                 2 of 3 points &gt; 2-sigma limit 0.333333....  FALSE
+## 4           6                   Poisson test p-value &lt;=0.05 0.666666....     NA
+## 5           1 5% quantile of the posterior distribution &gt; 1    1, 0.9, 0   TRUE
+##   signal_threshold         stat     stat_lcl     stat_ucl       p_value
+## 1             0.05 9.384745.... 8.153601.... 10.80178.... 8.526387e-214
+## 2     36.44548.... 3.467201.... -11.9067.... 26.30670....            NA
+## 3     26.69699.... -0.63599.... -11.9067.... 26.30670....            NA
+## 4               NA           NA           NA           NA            NA
+## 5                1 16.54627.... 9.833770.... 27.84070....  3.636984e-19
+##     stat_addtl
+## 1 1.074385....
+## 2 7.2, 9.7....
+## 3 7.2, 9.7....
+## 4           NA
+## 5 c(9.8337....</code></pre>
+</div>
+<div id="pain-topic-in-hernia-mesh-devices-and-all-other-devices" class="section level3">
+<h3>Pain topic in hernia mesh devices and all other devices</h3>
+<pre><code>##         time nA nB  nC   nD event
+## 1 2012-01-01  0  2 124  946     0
+## 2 2013-01-01  1  8 237 2246     1
+## 3 2014-01-01  3 18 453 2698     3
+## 4 2015-01-01  2  2 249 2322     2
+## 5 2016-01-01  1  5 248 2441     1
+## 6 2017-01-01  1  5 343 2817     1</code></pre>
+<pre><code>##                       test_name analysis_of run_status
+## 1  Proportional Reporting Ratio          NA       TRUE
+## 2 x-bar Western Electric Rule 1          NA       TRUE
+## 3 x-bar Western Electric Rule 2          NA       TRUE
+## 4                  Poisson Rare          NA      FALSE
+## 5                         BCPNN          NA       TRUE
+##                                          run_msg ref_time_start ref_time_end
+## 1                                        Success     2017-01-01   2017-01-01
+## 2                                        Success     2012-01-01   2017-01-01
+## 3                                        Success     2012-01-01   2017-01-01
+## 4 Minimum zero_rate of 0.666666666666667 not met     2012-01-01   2017-01-01
+## 5                                        Success     2017-01-01   2017-01-01
+##   eval_period                                      test_hyp  test_params signal
+## 1           1       Two-sided test at alpha=0.05 of PRR &gt; 1   1, 0.05, 0  FALSE
+## 2           6                       1 point &gt; 3-sigma limit 0.333333....  FALSE
+## 3           6                 2 of 3 points &gt; 2-sigma limit 0.333333....  FALSE
+## 4           6                   Poisson test p-value &lt;=0.05 0.666666....     NA
+## 5           1 5% quantile of the posterior distribution &gt; 1    1, 0.9, 0  FALSE
+##   signal_threshold         stat     stat_lcl     stat_ucl   p_value
+## 1             0.05 1.535471.... 0.255854.... 9.214878.... 0.6390432
+## 2     4.723350.... -0.36108.... -0.77121.... 3.571216....        NA
+## 3     3.615567.... 0.541622.... -0.77121.... 3.571216....        NA
+## 4               NA           NA           NA           NA        NA
+## 5                1 0.904935.... 0.108261.... 7.564133.... 0.5308405
+##     stat_addtl
+## 1 2.495011....
+## 2 1.4, 1.1....
+## 3 1.4, 1.1....
+## 4           NA
+## 5 c(0.1082....</code></pre>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

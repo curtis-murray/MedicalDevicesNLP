@@ -1,0 +1,12 @@
+name: fisher_anatomy
+title: fisher_anatomy
+username:
+account: sentiment-analysis-model
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4695716
+bundleId: 5054444
+url: https://sentiment-analysis-model.shinyapps.io/fisher_anatomy/
+when: 1632199904.62132
+asMultiple: FALSE
+asStatic: FALSE

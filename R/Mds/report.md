@@ -1,0 +1,143 @@
+---
+title: "Medical Device Meeting Report Manufacturer tf-idf"
+author: "Curtis Murray"
+mail: "curtis.murray@adelaide.edu.au"
+linkedin: "curtiswmurray"
+twitter: "curtis_w_murray"
+github: "curtis-murray"
+home: "curtismurray.tech"
+#logo: "logo_gallery.png"
+output:
+  bookdown::html_document2:
+    keep_tex: true
+    theme: "lumen"
+#    template: resources/template.html
+    css: resources/style.css
+    toc: TRUE
+    code_folding: "show"
+    number_sections: FALSE
+    toc_depth: 2
+    toc_float: TRUE
+    self_contained: FALSE
+#    pandoc_args: --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_HTMLorMML.js
+#    self_contained: FALSE
+---
+
+```{css zoom-lib-src, echo = FALSE}
+script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+```
+
+```{js zoom-jquery, echo = FALSE}
+$(document).ready(function() {
+$('body').prepend('<div class=\"zoomDiv\"><img src=\"\" class=\"zoomImg\"></div>');
+// onClick function for all plots (img's)
+$('img:not(.zoomImg)').click(function() {
+$('.zoomImg').attr('src', $(this).attr('src')).css({width: '100%'});
+$('.zoomDiv').css({opacity: '1', width: 'auto', border: '1px solid white', borderRadius: '5px', position: 'fixed', top: '50%', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)', boxShadow: '0px 0px 50px #888888', zIndex: '50', overflow: 'auto', maxHeight: '100%'});
+});
+// onClick function for zoomImg
+$('img.zoomImg').click(function() {
+$('.zoomDiv').css({opacity: '0', width: '0%'}); 
+
+});
+
+$('.my_card').on('click',function(e) {
+$(this).addClass('active');
+e.stopPropagation()
+});
+$(document).on("click", function(e) {
+if ($(e.target).is(".my_card") === false) {
+$(".my_card").removeClass("active");
+}
+});
+});
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(epuRate)
+library(rmarkdown)
+library(tidyverse)
+```
+
+```
+df <- read_csv("data/all_reports/all_reports_mached_manufacturer_df.csv")
+```
+
+```
+# Fisher test that the odds ratio between pain levels in pelvic reports and other reports is equal to 1.
+
+# -------
+# Pelvic vs hernia
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  filter(str_detect(`GMDN term`, "mesh")) %>% 
+  group_by(`GMDN term`) %>% 
+  mutate(hernia = str_detect(`Event description`, "(?i)hernia"),
+         pelvic = str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))")) %>% 
+  filter(hernia | pelvic) %>% 
+  filter(!str_detect(`Event description`,"Journal Article")) %>% 
+  filter(`Report date` < "2018-01-01")
+
+mesh_pain <- mesh_filtered %>% 
+  mutate(pain = str_detect(`Event description`, "pain")) %>% 
+  group_by(hernia, pelvic, pain) %>% 
+  summarise(count = n())
+
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","hernia"),
+         pain = ifelse(pain, "pain","no pain")) %>% 
+  select(type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  as.data.frame()
+
+rownames(pain_table) <- pain_table$type
+pain_table <- pain_table[,2:3]
+pain_table
+```
+
+```{r}
+fisher.test(pain_table)
+```
+
+```{r}
+# --------- 
+# Pelvic against all other devices
+
+df <- read_csv("data/all_reports/all_reports_mached_manufacturer_df.csv")
+
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  mutate(
+    pelvic = (str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))") & 
+                str_detect(`GMDN term`, "mesh"))
+  ) %>% 
+  mutate(other = !pelvic) %>% 
+  filter(`Report date` < "2018-01-01")
+
+mesh_pain <- mesh_filtered %>% 
+  mutate(pain = str_detect(`Event description`, "pain")) %>% 
+  group_by(other, pelvic, pain) %>% 
+  summarise(count = n())
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","other"),
+         pain = ifelse(pain, "pain","no pain")) %>% 
+  select(type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  as.data.frame()
+
+rownames(pain_table) <- pain_table$type
+pain_table <- pain_table[,2:3]
+
+pain_table
+```
+
+```{r}
+fisher.test(pain_table)
+```
+

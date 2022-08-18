@@ -1,0 +1,197 @@
+---
+title: "Medical Device Meeting Report Manufacturer tf-idf"
+author: "Curtis Murray"
+mail: "curtis.murray@adelaide.edu.au"
+linkedin: "curtiswmurray"
+twitter: "curtis_w_murray"
+github: "curtis-murray"
+home: "curtismurray.tech"
+#logo: "logo_gallery.png"
+output:
+  bookdown::html_document2:
+    keep_tex: true
+    theme: "lumen"
+#    template: resources/template.html
+    css: resources/style.css
+    toc: TRUE
+    code_folding: "show"
+    number_sections: FALSE
+    toc_depth: 2
+    toc_float: TRUE
+    self_contained: FALSE
+#    pandoc_args: --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_HTMLorMML.js
+#    self_contained: FALSE
+---
+
+```{css zoom-lib-src, echo = FALSE}
+script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+```
+
+```{js zoom-jquery, echo = FALSE}
+$(document).ready(function() {
+$('body').prepend('<div class=\"zoomDiv\"><img src=\"\" class=\"zoomImg\"></div>');
+// onClick function for all plots (img's)
+$('img:not(.zoomImg)').click(function() {
+$('.zoomImg').attr('src', $(this).attr('src')).css({width: '100%'});
+$('.zoomDiv').css({opacity: '1', width: 'auto', border: '1px solid white', borderRadius: '5px', position: 'fixed', top: '50%', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)', boxShadow: '0px 0px 50px #888888', zIndex: '50', overflow: 'auto', maxHeight: '100%'});
+});
+// onClick function for zoomImg
+$('img.zoomImg').click(function() {
+$('.zoomDiv').css({opacity: '0', width: '0%'}); 
+
+});
+
+$('.my_card').on('click',function(e) {
+$(this).addClass('active');
+e.stopPropagation()
+});
+$(document).on("click", function(e) {
+if ($(e.target).is(".my_card") === false) {
+$(".my_card").removeClass("active");
+}
+});
+});
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(epuRate)
+library(rmarkdown)
+library(tidyverse)
+library(DT)
+library(visNetwork) 
+library(igraph)
+library(tidytext)
+library(ggridges)
+```
+
+# Summary of Mesh events
+
+We take the reports, and filter for those that are mesh events.
+
+```{r}
+
+reports <- read_csv("../data/all_reports/all_reports_mached_manufacturer_df.csv")
+
+mesh_reports <- reports %>% 
+mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  filter(str_detect(`GMDN term`, "mesh"))
+```
+
+## Number of Mesh events
+
+```{r}
+reports %>% 
+mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  mutate(`GMDN term` = str_split(`GMDN term`, ',')) %>% 
+  unnest(`GMDN term`) %>% 
+  mutate(`GMDN term` = `GMDN term` %>% str_squish()) %>% 
+  mutate(mesh = str_detect(`GMDN term`, "mesh")) %>% 
+  group_by(mesh) %>% 
+  summarise(count = n()) %>% 
+  datatable()
+```
+
+```{r}
+reports %>% 
+mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  mutate(`GMDN term` = str_split(`GMDN term`, ',')) %>% 
+  unnest(`GMDN term`) %>% 
+  mutate(`GMDN term` = `GMDN term` %>% str_squish()) %>% 
+  group_by(`GMDN term`) %>% 
+  summarise(count = n()) %>% 
+  arrange(-count) %>% 
+  datatable()
+```
+
+## Mesh events outcomes
+
+```{r}
+mesh_reports  %>% 
+   mutate(`GMDN term` = str_split(`GMDN term`, ',')) %>% 
+  unnest(`GMDN term`) %>% 
+  mutate(`GMDN term` = `GMDN term` %>% str_squish()) %>% 
+group_by(`GMDN term`) %>% 
+  summarise(count = n()) %>% 
+  arrange(-count) %>% 
+  datatable()
+```
+
+## Mesh event types
+
+```{r}
+mesh_reports %>%   
+  group_by(`Reported event outcome`) %>% 
+  summarise(count = n()) %>% 
+  arrange(-count) %>% 
+  datatable()
+```
+
+## Associated terms
+
+```{r}
+reports %>% 
+mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  filter(str_detect(`GMDN term`, "mesh")) %>% 
+  mutate(`GMDN term` = str_split(`GMDN term`, ',')) %>% 
+  unnest(`GMDN term`) %>% 
+  mutate(`GMDN term` = `GMDN term` %>% str_squish()) %>% 
+  group_by(`GMDN term`) %>% 
+  summarise(count = n()) %>% 
+  filter(!str_detect(`GMDN term`, "mesh")) %>%
+  arrange(-count) %>% 
+  datatable()
+```
+
+## Mesh manufacturers 
+
+### Without name matching
+
+```{r}
+mesh_reports %>% 
+  group_by(Manufacturer) %>% 
+  summarise(count = n()) %>% 
+  arrange(-count) %>% 
+  datatable()
+```
+
+### With name matching
+
+```{r}
+mesh_reports %>% 
+  group_by(mapped_name) %>% 
+  summarise(count = n()) %>% 
+  arrange(-count) %>% 
+  datatable()
+```
+
+## Date of reports
+
+```{r,fig.width=12, fig.height=14}
+mesh_reports %>% 
+  ggplot(
+    aes(x = `Report date`, 
+        y = stringr::str_wrap(mapped_name, 30), 
+        fill = mapped_name,
+        height = ..count..),
+  ) + 
+  geom_density_ridges2(stat = "binline", 
+                      scale = 1,
+                      alpha = 0.5,
+                      bins = 50) +
+  theme_ridges() +
+  theme(legend.position = "none") %>% 
+  labs(x = "Report date", y = "", title = "Reported events for manufactures by date") + 
+  theme(legend.position = "none")
+```
+
+
+```{r}
+mesh_reports %>% 
+  select(Manufacturer = mapped_name,
+         Source = `Report source category`,
+         Description = `Event description`) %>% 
+  datatable()
+```
+

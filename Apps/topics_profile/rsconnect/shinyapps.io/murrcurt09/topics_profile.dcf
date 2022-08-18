@@ -1,0 +1,12 @@
+name: topics_profile
+title: topics_profile
+username:
+account: murrcurt09
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5020078
+bundleId: 5200120
+url: https://curtis-w-murray.shinyapps.io/topics_profile/
+when: 1635806674.27875
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,183 @@
+---
+title: "Medical Device Meeting Report"
+author: "Curtis Murray"
+mail: "curtis.murray@adelaide.edu.au"
+linkedin: "curtiswmurray"
+twitter: "curtis_w_murray"
+github: "curtis-murray"
+home: "curtismurray.tech"
+#logo: "logo_gallery.png"
+output:
+  bookdown::html_document2:
+    keep_tex: true
+    theme: "lumen"
+#    template: resources/template.html
+    css: resources/style.css
+    toc: TRUE
+    code_folding: "show"
+    number_sections: FALSE
+    toc_depth: 2
+    toc_float: TRUE
+    self_contained: FALSE
+#    pandoc_args: --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_HTMLorMML.js
+#    self_contained: FALSE
+---
+
+```{css zoom-lib-src, echo = FALSE}
+script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+```
+
+```{js zoom-jquery, echo = FALSE}
+$(document).ready(function() {
+$('body').prepend('<div class=\"zoomDiv\"><img src=\"\" class=\"zoomImg\"></div>');
+// onClick function for all plots (img's)
+$('img:not(.zoomImg)').click(function() {
+$('.zoomImg').attr('src', $(this).attr('src')).css({width: '100%'});
+$('.zoomDiv').css({opacity: '1', width: 'auto', border: '1px solid white', borderRadius: '5px', position: 'fixed', top: '50%', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)', boxShadow: '0px 0px 50px #888888', zIndex: '50', overflow: 'auto', maxHeight: '100%'});
+});
+// onClick function for zoomImg
+$('img.zoomImg').click(function() {
+$('.zoomDiv').css({opacity: '0', width: '0%'}); 
+
+});
+
+$('.my_card').on('click',function(e) {
+$(this).addClass('active');
+e.stopPropagation()
+});
+$(document).on("click", function(e) {
+if ($(e.target).is(".my_card") === false) {
+$(".my_card").removeClass("active");
+}
+});
+});
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(epuRate)
+library(rmarkdown)
+library(tidyverse)
+library(DT)
+library(visNetwork) 
+library(igraph)
+```
+
+# Manufacturer Name Matching
+
+## Problem Outline
+
+One of the problems that Tobin noticed in the data was inconsistent entries for manufacturer names. He had a simple solution that would look to see if, for example, "Boston Scientific" was in a manufacturer name (e.g. "Boston Scientific Ltd."), and if so, then map that manufacturer to be "Boston Scientific". This was in place for nine different manufacturers, but he noted that this would have to be scaled up.
+
+## Methods
+
+I've attempted to map manufactures to the same name with the following procedure:
+
+1. Removing medical manufacturer stop-words.
+These stopwords were found by looking at the words that appeared the most in the manufacturer names:
+```{r,echo = F}
+c(
+  "ltd",
+  "inc",
+  "medical",
+  "co",
+  "pty",
+  "corporation",
+  "limited",
+  "llc", 
+  "systems",
+  "international",
+  "products",
+  "technology",
+  "surgical",
+  "healthcare",
+  "industries",
+  "incorporated"
+)
+``` 
+2. Removing punctuation.
+So far, just periods and commas. We can explore how the removal of other symbols affects the results.
+
+3. Dropping the manufacturer names to lowercase
+Some manufacturer names are capitalised differently. This, combined with the above steps, give us a lot of matches, almost for free. There is still plenty of room for improvement. We still want to catch spelling mistakes and similar but different wordings of the same manufacturer. To do this, we can;
+4. Performing fuzzy string matching on the resultant manufacturer strings
+This is a way of comparing how similar two strings are, like spell-check!
+
+
+## Results
+
+After performing Steps 1-4, we find a pairwise comparison of the dissimilarities between company names. Manufacturers with a smaller dissimilarity are more closely related. A dissimilarity of 0 indicates that after Steps 1-3, they were the same.
+
+```{r, echo = F,message = F,warning=F}
+df <- read_csv(file = "data/companies/similar_companies.csv") 
+
+DT::datatable(
+  df %>%     transmute(Manufacturer.x, Manufacturer.y, Dissimilarity = d) %>% 
+    top_n(10000,-Dissimilarity), 
+  extensions = 'Buttons',
+  filter = 'top',
+  options = list(
+    autoWidth = TRUE,
+    scrollX = TRUE,
+    lengthChange = FALSE,
+    paging = TRUE,
+    searching = TRUE,
+    searchHighlight = TRUE,
+    dom = 'Bfrtip',
+    buttons = c('csv'),
+    order = list(list(3, 'asc'))
+  ))
+```
+
+### Network Visualisation
+
+We can visualise which manufactures will be mapped to the same name by looking at the connected components in a graph where we set a maximum threshold for the dissimilarity. Here we set this to 0.1 as it looked reasonable, but we could fine-tune this. Perhaps an idea would be to seek the maximum dissimilarity that maximises the number of strongly connected components (i.e. every node in a connected component is connected to every node in the same connected component)—food for thought. Enjoy a pretty network, and hopefully, it renders on your computer.
+
+```{r,  echo = F,message = F,warning=F}
+threshold <- 0.1
+
+all_manufacturers <- read_csv("data/companies/all_manufacturers.csv")
+
+same_companies <- df %>% filter(d <= threshold)
+
+company_network <- same_companies %>% bind_rows(same_companies %>% 
+                                                  mutate(Manufacturer = Manufacturer.y,
+                                                         Manufacturer.y = Manufacturer.x,
+                                                         Manufacturer.x = Manufacturer) %>%
+                                                  select(-Manufacturer)) %>% 
+  group_by_all() %>% 
+  summarise() %>% #Removes duplicates
+  ungroup() %>% 
+  #select(from = Manufacturer.x, to = Manufacturer.y) %>% 
+  left_join(all_manufacturers %>% select(Manufacturer, from = Manufacturer_ID), 
+            by = c("Manufacturer.x" = "Manufacturer")) %>%
+  left_join(all_manufacturers %>% select(Manufacturer, to = Manufacturer_ID),
+            by = c("Manufacturer.y" = "Manufacturer"))
+
+
+my_graph <- graph_from_data_frame(company_network %>% 
+                                    transmute(from, to, size = 1-d,
+                                              #    length = d
+                                    ),
+                                  directed = FALSE, 
+                                  vertices =  all_manufacturers %>% 
+                                    transmute(id = Manufacturer_ID,
+                                              label = Manufacturer,
+                                              size = count %>% as.numeric()) %>% 
+                                    mutate(size = size /5,
+                                           font.size = 10*sqrt(size)) %>% 
+                                    filter(id %in% company_network$from | id %in% company_network$to  )
+)
+
+visIgraph(my_graph,idToLabel = F,physics = T) %>% 
+  visOptions(highlightNearest = list(enabled = T, hover = T),
+             nodesIdSelection = T,
+             height = "1080", 
+             width = "auto")
+```
+
+### Future steps
+
+- Chose a threshold dissimilarity.
+- Map each manufacturer in a connected component to the largest (most occurring) manufacturer in the same connected component.

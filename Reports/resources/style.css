@@ -1,0 +1,194 @@
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 84px;
+}
+
+h1 {
+  padding-top: 100px;
+}
+
+h1.title {
+  text-align: center;
+}
+
+pre {
+    border: 0px solid #cccccc;
+    border-radius: 0px;
+ }
+
+
+/* ---------- Links ----------------- */
+a {
+  color: #45AC94;
+}
+a:hover {
+  color: #45AC94;
+}
+
+
+
+/* ---------- TOC ----------------- */
+#TOC {
+  top: 20%;
+  position: fixed;
+  width: 210px;
+}
+#TOC:hover{
+  opacity: 1;
+}
+.tocify {
+  border: none;
+  color: grey;
+  border-radius: 0px;
+  padding-left: 0px;
+}
+
+.tocify-item.list-group-item {
+    border-left: solid;
+    border-color: white;
+}
+
+.list-group-item.active {
+    color: #45AC94;
+    background-color: white;
+    border-left: solid;
+    border-color: #45AC94;
+    opacity: 1;
+}
+.list-group-item:hover {
+    color: #45AC94;
+    background-color: white;
+    border-left: solid;
+    border-color: #45AC94;
+}
+.list-group-item.active:hover{
+    color: white;
+    background-color: #45AC94;
+    border-left: solid;
+    border-color: #45AC94;
+}
+.tocify-subheader.list-group {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.tocify-header.list-group {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.tocify-extend-page {
+  display: none;
+}
+
+/* ------ This is just to fix the bug on Safari where table of content is on top of content */
+.toc-content {
+  margin-left: 0px
+}
+
+/* ------ Don't display on small media */
+/*@media (max-width: 1400px) {
+  #TOC {
+    width: auto;
+    display: none;
+  }
+  .toc-content {
+    margin-left: auto
+  }
+} */
+
+
+
+/* ---------- Button ----------------- */
+.btn {
+    border-width: 0 0px 0px 0px;
+    font-weight: normal;
+    text-transform: ;
+    color: #45AC94;
+}
+.btn-default {
+    color: #45AC94;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #45AC94;
+    border-radius: 0px;
+}
+
+.nav{
+  padding-bottom: 20px;
+}
+
+.nav-pills{
+  display: block;
+}
+
+.tab-content{
+    border: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-color: grey;
+    border-width: 0.00px;
+    /* box-shadow: 7px 10px 20px 5px;*/
+    border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.tab-content:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+.infobox {
+  color: white;
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  background: #45AC94 5px center/3em no-repeat;
+}
+
+.caution {
+  background-image: url("../images/caution.png");
+}
+
+.my_card{
+  opacity: 1;
+  height: 500px;
+}
+
+.my_card.active {
+  background-color: red;
+        width: 100%;
+        height:75%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        box-shadow: rgb(136, 136, 136) 0px 0px 50px;
+        z-index: 99999;
+        overflow: auto;
+        max-height: 100%;
+        background: white 5px center/3em no-repeat;
+        opacity: 1;
+}
+.visNetwork.html-widget.html-widget-static-bound{
+  height: 100%;
+}

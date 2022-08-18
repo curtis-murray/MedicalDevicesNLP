@@ -1,0 +1,491 @@
+---
+title: "Pelvic mesh recall signal"
+author: "Curtis Murray"
+mail: "curtis.murray@adelaide.edu.au"
+linkedin: "curtiswmurray"
+twitter: "curtis_w_murray"
+github: "curtis-murray"
+home: "curtismurray.tech"
+#logo: "logo_gallery.png"
+output:
+  bookdown::html_document2:
+    keep_tex: true
+    theme: "lumen"
+#    template: resources/template.html
+    css: resources/style.css
+    toc: TRUE
+    code_folding: "show"
+    number_sections: FALSE
+    toc_depth: 2
+    toc_float: TRUE
+    self_contained: FALSE
+#    pandoc_args: --mathjax=https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_HTMLorMML.js
+#    self_contained: FALSE
+---
+
+```{css zoom-lib-src, echo = FALSE}
+script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+```
+
+```{js zoom-jquery, echo = FALSE}
+$(document).ready(function() {
+$('body').prepend('<div class=\"zoomDiv\"><img src=\"\" class=\"zoomImg\"></div>');
+// onClick function for all plots (img's)
+$('img:not(.zoomImg)').click(function() {
+$('.zoomImg').attr('src', $(this).attr('src')).css({width: '100%'});
+$('.zoomDiv').css({opacity: '1', width: 'auto', border: '1px solid white', borderRadius: '5px', position: 'fixed', top: '50%', left: '50%', marginRight: '-50%', transform: 'translate(-50%, -50%)', boxShadow: '0px 0px 50px #888888', zIndex: '50', overflow: 'auto', maxHeight: '100%'});
+});
+// onClick function for zoomImg
+$('img.zoomImg').click(function() {
+$('.zoomDiv').css({opacity: '0', width: '0%'}); 
+
+});
+
+$('.my_card').on('click',function(e) {
+$(this).addClass('active');
+e.stopPropagation()
+});
+$(document).on("click", function(e) {
+if ($(e.target).is(".my_card") === false) {
+$(".my_card").removeClass("active");
+}
+});
+});
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(epuRate)
+library(rmarkdown)
+library(tidyverse)
+library(lubridate)
+library(mds)
+library(mdsstat)
+```
+
+```{r}
+df <- read_csv("data/all_reports/all_reports_mached_manufacturer_df.csv")
+```
+
+Testing for statistical significance between pelvic mesh reports and other reports to identify a potential signal that could have been used to recall pelvic mesh devices prior to the 2018 recall.
+
+## Fisher test of pain
+
+### Pain in pelvic mesh devices and hernia mesh devices
+
+First we look at mentions of pain in pelvic mesh devices and hernia mesh devices. We construct a contingency table counting the number of reports that have mentions of the word `pain' for both devices.
+
+
+```{r}
+# Fisher test that the odds ratio between pain levels in pelvic reports and other reports is equal to 1.
+
+# -------
+# Pelvic vs hernia
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  filter(str_detect(`GMDN term`, "mesh")) %>% 
+  group_by(`GMDN term`) %>% 
+  mutate(hernia = str_detect(`Event description`, "(?i)hernia"),
+         pelvic = str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))")) %>% 
+  filter(hernia | pelvic) %>% 
+  filter(!str_detect(`Event description`,"Journal Article")) %>% 
+  filter(`Report date` < "2018-01-01")
+
+mesh_pain <- mesh_filtered %>% 
+  mutate(pain = str_detect(`Event description`, "(?i)pain")) %>% 
+  group_by(hernia, pelvic, pain) %>% 
+  summarise(count = n())
+
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","hernia"),
+         pain = ifelse(pain, "pain","no pain")) %>% 
+  select(type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  select(type, pain, `no pain`) %>% 
+  as.data.frame()
+
+rownames(pain_table) <- pain_table$type
+pain_table <- pain_table[,2:3]
+pain_table
+```
+
+We use Fisher's exact test to test the null hypothesis that the odds ratio is equal to one for
+
+$$ Odds Ratio = \frac{Pain_P / NoPain_P}{Pain_H / NoPain_H}$$
+
+```{r}
+fisher.test(pain_table)
+```
+
+We reject the null hypothesis that the odds ratio is equal to one $\left(p = 3e-12\right)$, with a $95\%$ confidence interval of $(7.22, 91.7)$. The odds ratio can be interpreted as how many times greater the ratio of pain to no pain documents is between pelvic mesh and hernia mesh devices is.
+
+### Pain in pelvic mesh devices and all other devices
+
+```{r}
+# --------- 
+# Pelvic against all other devices
+
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  mutate(
+    pelvic = (str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))") & 
+                str_detect(`GMDN term`, "mesh"))
+  ) %>% 
+  mutate(other = !pelvic) %>% 
+  filter(`Report date` < "2018-01-01")
+
+mesh_pain <- mesh_filtered %>% 
+  mutate(pain = str_detect(`Event description`, "(?i)pain")) %>% 
+  group_by(other, pelvic, pain) %>% 
+  summarise(count = n())
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","other"),
+         pain = ifelse(pain, "pain","no pain")) %>% 
+  select(type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  select(type, pain, `no pain`) %>% 
+  as.data.frame()
+
+rownames(pain_table) <- pain_table$type
+pain_table <- pain_table[,2:3]
+
+pain_table
+```
+
+```{r}
+fisher.test(pain_table)
+```
+
+## Fisher test of pain topic
+### Pain topic in pelvic mesh devices and hernia mesh devices
+
+We can do the same thing but looking at a `pain' topic.
+
+As a start, I've picked the below topic, and set a threshold of $0.05$ to indicate its presence in a document.
+
+```{r}
+library(ggwordcloud)
+
+tidy_topics <- read_csv("data/hSBM/Clean/tidy_topics.csv")
+tidy_topics_docs <- read_csv("data/hSBM/Clean/tidy_topics_docs.csv")
+
+pain_topic_1 <- tidy_topics %>% filter(word == "pain", Level == 1) %>% 
+  pull(topic)
+
+wc_data <- tidy_topics %>% 
+  filter(Level == 1, topic == pain_topic_1)
+
+ggwordcloud(words = wc_data$word, freq = wc_data$p)
+```
+
+```{r}
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  filter(str_detect(`GMDN term`, "mesh")) %>% 
+  group_by(`GMDN term`) %>% 
+  mutate(hernia = str_detect(`Event description`, "(?i)hernia"),
+         pelvic = str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))")) %>% 
+  filter(hernia | pelvic) %>% 
+  filter(!str_detect(`Event description`,"Journal Article"))
+
+mesh_pain <- mesh_filtered %>% 
+  ungroup() %>% 
+  left_join(tidy_topics_docs %>% 
+              filter(Level == 1, topic == pain_topic_1),
+            by = c("Report number" = "document")) %>% 
+  select(hernia, pelvic, p, `Event description`) %>% 
+  mutate(pain = ifelse(p >= 0.3, "pain threshold", "no pain threshold")) %>% 
+  mutate(pain = ifelse(is.na(p), "no pain threshold",pain)) %>% 
+  group_by(hernia, pelvic, pain) %>% 
+  summarise(count = n())
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","hernia")) %>% 
+  select(type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  select(type, `pain threshold`, `no pain threshold`) %>% 
+  as.data.frame()
+
+
+rownames(pain_table) <- pain_table$type
+pain_table <- pain_table[,2:3]
+pain_table
+
+```
+
+```{r}
+fisher.test(pain_table)
+```
+
+### Pain topic in pelvic mesh devices and all other devices
+
+```{r}
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  mutate(
+    pelvic = (str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))") & 
+                str_detect(`GMDN term`, "mesh"))
+  ) %>% 
+  mutate(other = !pelvic) %>% 
+  filter(`Report date` < "2018-01-01")
+
+mesh_pain <- mesh_filtered %>% 
+  ungroup() %>% 
+  left_join(tidy_topics_docs %>% 
+              filter(Level == 1, topic == pain_topic_1),
+            by = c("Report number" = "document")) %>% 
+  select(other, pelvic, p, `Event description`) %>% 
+  mutate(pain = ifelse(p >= 0.3, "pain threshold", "no pain threshold")) %>% 
+  mutate(pain = ifelse(is.na(p), "no pain threshold",pain)) %>% 
+  group_by(other, pelvic, pain) %>% 
+  summarise(count = n())
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","other")) %>% 
+  select(type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  select(type, `pain threshold`, `no pain threshold`) %>% 
+  as.data.frame()
+
+
+rownames(pain_table) <- pain_table$type
+pain_table <- pain_table[,2:3]
+pain_table
+
+```
+
+```{r}
+fisher.test(pain_table)
+```
+
+## Disproportionality analysis
+
+```{r}
+# Save a list of algorithms to run
+x <- list(prr=list(),
+            xbar=list(),
+            xbar=list(ts_event=c(Rate="rate"), we_rule=2),
+            poisson_rare=list(p_rate=0.3),
+          bcpnn = list())
+algos <- define_algos(x)
+```
+
+### Pain in pelvic mesh devices and hernia mesh devices
+
+```{r}
+
+unit = "years"
+
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  filter(str_detect(`GMDN term`, "mesh")) %>% 
+  group_by(`GMDN term`) %>% 
+  mutate(hernia = str_detect(`Event description`, "(?i)hernia"),
+         pelvic = str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))")) %>% 
+  filter(hernia | pelvic) %>% 
+  filter(!str_detect(`Event description`,"Journal Article")) %>% 
+  filter(`Report date` < "2018-01-01") %>% 
+  ungroup() %>% 
+  mutate(Date = floor_date(`Report date`, unit = unit))
+
+mesh_pain <- mesh_filtered %>% 
+  mutate(pain = str_detect(`Event description`, "(?i)pain")) %>% 
+  group_by(hernia, pelvic, pain, Date) %>% 
+  summarise(count = n())
+
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","hernia"),
+         pain = ifelse(pain, "pain","no pain")) %>% 
+  select(Date,type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  as.data.frame() %>% 
+  arrange(Date) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "pelvic", `no pain` = 0, `pain` = 0)
+  ) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "hernia", `no pain` = 0, `pain` = 0)
+  ) %>% 
+  group_by(Date, type) %>% 
+  summarise(pain = sum(pain, na.rm = T),
+            `no pain` = sum(`no pain`, na.rm = T)) %>% 
+  pivot_wider(names_from = type, values_from = c("pain", "no pain")) %>% 
+  ungroup() %>% 
+  transmute(time = Date, nA = pain_pelvic, nB = `no pain_pelvic`, nC = pain_hernia, nD = `no pain_hernia`,event = nA) %>% 
+  as.data.frame() 
+pain_table
+run_algos(pain_table, algos)
+
+```
+
+### Pain topic in pelvic mesh devices and hernial mesh devices
+
+```{r}
+#----- Pain topic hernia
+
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  filter(str_detect(`GMDN term`, "mesh")) %>% 
+  group_by(`GMDN term`) %>% 
+  mutate(hernia = str_detect(`Event description`, "(?i)hernia"),
+         pelvic = str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))")) %>% 
+  filter(hernia | pelvic) %>% 
+  filter(!str_detect(`Event description`,"Journal Article")) %>% 
+  filter(`Report date` < "2018-01-01") %>% 
+  mutate(Date = floor_date(`Report date`, unit = unit))
+
+mesh_pain <- mesh_filtered %>% 
+  ungroup() %>% 
+  left_join(tidy_topics_docs %>% 
+              filter(Level == 1, topic == pain_topic_1),
+            by = c("Report number" = "document")) %>% 
+  select(hernia, pelvic, p, `Event description`, Date) %>% 
+  mutate(pain = ifelse(p >= 0.05, "pain threshold", "no pain threshold")) %>% 
+  mutate(pain = ifelse(is.na(p), "no pain threshold",pain)) %>% 
+  group_by(hernia, pelvic, pain, Date) %>% 
+  summarise(count = n()) 
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","hernia")) %>% 
+  select(Date,type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  as.data.frame() %>% 
+  arrange(Date) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "pelvic", `no pain` = 0, `pain` = 0)
+  ) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "hernia", `no pain` = 0, `pain` = 0)
+  ) %>% 
+  group_by(Date, type) %>% 
+  summarise(`pain threshold` = sum(`pain threshold`, na.rm = T),
+            `no pain threshold` = sum(`no pain threshold`, na.rm = T)) %>% 
+  pivot_wider(names_from = type, values_from = c("pain threshold", "no pain threshold")) %>% 
+  ungroup() %>% 
+  transmute(time = Date, nA = `pain threshold_pelvic`, nB = `no pain threshold_pelvic`, nC = `pain threshold_hernia`, nD = `no pain threshold_hernia`,event = nA) %>% 
+  as.data.frame()
+
+pain_table
+run_algos(pain_table, algos)
+```
+
+### Pain topic in pelvic mesh devices and all other devices
+
+```{r}
+#----- Pain topic other
+
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  mutate(
+    pelvic = (str_detect(`Event description`, "(?i)((pelvi)|(urina)|(incont)|(vagina)|(uterus)|(anterior)|(posterior))") & 
+                str_detect(`GMDN term`, "mesh"))
+  ) %>% 
+  mutate(other = !pelvic) %>% 
+  ungroup() %>% 
+  mutate(Date = floor_date(`Report date`, unit = unit)) %>% 
+  filter(Date < "2018-01-01")
+
+mesh_pain <- mesh_filtered %>% 
+  ungroup() %>% 
+  left_join(tidy_topics_docs %>% 
+              filter(Level == 1, topic == pain_topic_1),
+            by = c("Report number" = "document")) %>% 
+  select(other, pelvic, p, `Event description`, Date) %>% 
+  mutate(pain = ifelse(p >= 0.05, "pain threshold", "no pain threshold")) %>% 
+  mutate(pain = ifelse(is.na(p), "no pain threshold",pain)) %>% 
+  group_by(other, pelvic, pain, Date) %>% 
+  summarise(count = n()) 
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(pelvic, "pelvic","other")) %>% 
+  select(Date,type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  arrange(Date) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "pelvic", `no pain threshold` = 0, `pain threshold` = 0)
+  ) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "other", `no pain threshold` = 0, `pain threshold` = 0)
+  ) %>% 
+  group_by(Date, type) %>% 
+  summarise(`pain threshold`= sum(`pain threshold`, na.rm = T),
+            `no pain threshold` = sum(`no pain threshold`, na.rm = T)) %>% 
+  pivot_wider(names_from = type, values_from = c("pain threshold", "no pain threshold")) %>% 
+  ungroup() %>% 
+  transmute(time = Date, nA = `pain threshold_pelvic`, nB = `no pain threshold_pelvic`, nC = `pain threshold_other`, nD = `no pain threshold_other`,event = nA) %>% 
+  as.data.frame()
+
+pain_table
+run_algos(pain_table, algos)
+```
+
+
+### Pain topic in hernia mesh devices and all other devices
+
+```{r}
+#----- Pain topic other
+
+mesh_filtered <- df %>% 
+  mutate(`GMDN term` = str_to_lower(`GMDN term`)) %>%
+  mutate(
+    hernia = (str_detect(`Event description`, "(?i)hernia") & 
+                str_detect(`GMDN term`, "mesh"))
+  ) %>% 
+  mutate(other = !hernia) %>% 
+  ungroup() %>% 
+  mutate(Date = floor_date(`Report date`, unit = unit)) %>% 
+  filter(Date < "2018-01-01")
+
+mesh_pain <- mesh_filtered %>% 
+  ungroup() %>% 
+  left_join(tidy_topics_docs %>% 
+              filter(Level == 1, topic == pain_topic_1),
+            by = c("Report number" = "document")) %>% 
+  select(other, hernia, p, `Event description`, Date) %>% 
+  mutate(pain = ifelse(p >= 0.05, "pain threshold", "no pain threshold")) %>% 
+  mutate(pain = ifelse(is.na(p), "no pain threshold",pain)) %>% 
+  group_by(other, hernia, pain, Date) %>% 
+  summarise(count = n()) 
+
+pain_table <- mesh_pain %>% 
+  ungroup() %>% 
+  mutate(type = ifelse(hernia, "hernia","other")) %>% 
+  select(Date,type,pain,count) %>% 
+  pivot_wider(values_from = count, names_from = pain) %>% 
+  arrange(Date) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "hernia", `no pain threshold` = 0, `pain threshold` = 0)
+  ) %>% 
+  bind_rows(
+    tibble(Date = seq.Date(from = min(mesh_pain$Date), to = max(mesh_pain$Date), by = unit)) %>% 
+      mutate(type = "other", `no pain threshold` = 0, `pain threshold` = 0)
+  ) %>% 
+  group_by(Date, type) %>% 
+  summarise(`pain threshold`= sum(`pain threshold`, na.rm = T),
+            `no pain threshold` = sum(`no pain threshold`, na.rm = T)) %>% 
+  pivot_wider(names_from = type, values_from = c("pain threshold", "no pain threshold")) %>% 
+  ungroup() %>% 
+  transmute(time = Date, nA = `pain threshold_hernia`, nB = `no pain threshold_hernia`, nC = `pain threshold_other`, nD = `no pain threshold_other`,event = nA) %>% 
+  as.data.frame()
+
+pain_table
+run_algos(pain_table, algos)
+```
