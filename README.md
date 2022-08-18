@@ -10,7 +10,7 @@ Tobin's code to scrape data, saved to data/all_reports/all_reports_df.csv
 - R/TGA-DAEN_match_manufacturers.R
   - This tries to match manufacturer names using fuzzy string detection and does some preprocessing.
 - R/gen_train.R
- - A little more preprocessing and formatting for hSBM.
+  - A little more preprocessing and formatting for hSBM.
 
 You won't have to run any of this if you don't want to, results are in data/hSBM/train.csv
 
