@@ -16,23 +16,23 @@ You won't have to run any of this if you don't want to, results are in data/hSBM
 
 ### Topic Modelling
 - Python/hSBM.py
-Peforms hierarchical stochastic block modelling. Again, no need to run unless you want to change any of the preprocessing steps.
+  - Peforms hierarchical stochastic block modelling. Again, no need to run unless you want to change any of the preprocessing steps.
 
 ### Post Processing
 - R/analyse_topics_clean.R
-Formats the hSBM results into:
+  - Formats the hSBM results into:
 - data/tidy_topics.csv
-This gives P(word | Level, Topic)
+  - This gives P(word | Level, Topic)
 - data/tidy_topics_docs.csv
-This gives P(topic | Level, Doc)
+  - This gives P(topic | Level, Doc)
 
 From here you can do all the fun stuff. 
 
 ### Analysis
 - R/med_devices_data.R
-This gets the data for the disproportionality analysis which Ty has been using.
+  - This gets the data for the disproportionality analysis which Ty has been using.
 
 ## Notes: 
 - You will need to run R/analyse_topics_clean.R to generate data/tidy_topics_docs.R as it is > 200MB and won't push to github.
-- R appears to use ...1 instead of X1 now for loading unnamed colums. If you get an error finding "X1" and replacing with "...1". Probably the same with "X2" and "...2". #TODO I will need to check this at some point.
+- R appears to use ...1 instead of X1 now for loading unnamed colums. If you get an error, try finding "X1" and replacing with "...1". Probably the same with "X2" and "...2". #TODO I will need to check this at some point.
 
