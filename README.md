@@ -1,4 +1,4 @@
-#MedicalDevicesNLP
+# MedicalDevicesNLP
 
 Brief and incomplete overview of some of the processes being used. There may be incomplete code that I need to fix up, and I've noticed some change in tidyverse's behaviour (more on this in the Notes section).
 
